@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A4Dance Reasoning.">
+  <meta name="keywords" content="robotics, affordance reasoning, planning, multimodal foundation models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .coming-soon-card {
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .coming-soon-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+    }
+
+    .coming-soon-card .icon {
+      color: #4A90E2;
+      margin-bottom: 12px;
+    }
+
+    .anonymous-note {
+      margin-top: 0.75rem;
+      color: #666;
+    }
+
+    .placeholder-button {
+      pointer-events: none;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="is-size-6 publication-authors anonymous-note">
+            <span class="author-block">Project page under construction</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark placeholder-button">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper Coming Soon</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark placeholder-button">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code Coming Soon</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark placeholder-button">
+                  <span class="icon">
+                    <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data Coming Soon</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark placeholder-button">
+                  <span class="icon">
+                    <i class="fas fa-play"></i>
+                  </span>
+                  <span>Demo Coming Soon</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Existing robot planning systems rely on appearance-based reasoning, where visual observations are encoded into latent spaces organized around object appearances (e.g., recognizing a "cart" based on how it looks). However, planning requires reasoning about task-relevant functionalities of objects (e.g., whether an object is "movable"), which appearance-based latent spaces do not capture. As a result, existing approaches struggle to generalize to novel robot-object interactions.
+            </p>
+
+            <p>
+              We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce A4Dance, which maps visual observations into a shared latent space structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4Dance <em>infers</em> functionalities relevant to the observed object.
+            </p>
+
+            <p>
+              Furthermore, we introduce an affordance <em>discovery</em> mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4Dance uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4Dance across several planning tasks involving diverse and unseen affordances. A4Dance achieves 94% inference accuracy on existing affordances, outperforming state-of-the-art approaches by over 15 percentage points, improves new affordance inference accuracy from 60% to 90% with less than 10% of the original training data, and enables 100x faster inference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Coming Soon</h2>
+
+        <div class="columns is-multiline is-centered">
+
+          <div class="column is-6">
+            <div class="card coming-soon-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-project-diagram fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Framework Overview</h3>
+                <p>Figures and method details will be released soon.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card coming-soon-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-robot fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Robot Demonstrations</h3>
+                <p>Videos and qualitative examples will be added soon.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card coming-soon-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-chart-line fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Experiments</h3>
+                <p>Evaluation results and analysis will be posted soon.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card coming-soon-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-code fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Resources</h3>
+                <p>Code, models, and datasets will be made available soon.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{a4dance2026functional,
+  title={What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning},
+  author={Anonymous Authors},
+  year={2026},
+  note={Coming soon}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template adapted from the Nerfies project page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

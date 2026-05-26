@@ -1,0 +1,22 @@
+.coming-soon-card {
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.coming-soon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+.coming-soon-card .icon {
+  color: #4A90E2;
+  margin-bottom: 12px;
+}
+.anonymous-note {
+  margin-top: 0.75rem;
+  color: #666;
+}
+.placeholder-button {
+  pointer-events: none;
+  opacity: 0.75;
+}
