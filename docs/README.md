@@ -1,12 +1,5 @@
-# A4Dance project page
+Existing robot planning systems rely on appearance-based reasoning, where visual observations are encoded into latent spaces organized around object appearances (e.g., recognizing a "cart" based on how it looks). However, planning requires reasoning about task-relevant functionalities of objects (e.g., whether an object is "movable"), which appearance-based latent spaces do not capture. As a result, existing approaches struggle to generalize to novel robot-object interactions.
 
-Deploy this `docs/` folder to the `a4dance-reasoning.github.io` repository.
+We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce A4Dance, which maps visual observations into a shared latent space structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4Dance infers functionalities relevant to the observed object.
 
-This package keeps the same general Bulma/Nerfies-style template structure as the referenced uncertainty-in-planning site:
-- `docs/index.html`
-- `docs/static/css/`
-- `docs/static/js/`
-- `docs/static/images/`
-- `docs/static/videos/`
-
-Author names are intentionally not included.
+Furthermore, we introduce an affordance discovery mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4Dance uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4Dance across several planning tasks involving diverse and unseen affordances. A4Dance achieves 94% inference accuracy on existing affordances, outperforming state-of-the-art approaches by over 15 percentage points, improves new affordance inference accuracy from 60% to 90% with less than 10% of the original training data, and enables 100x faster inference.
