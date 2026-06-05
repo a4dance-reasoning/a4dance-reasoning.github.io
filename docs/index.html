@@ -6,7 +6,7 @@
   <meta name="keywords" content="robotics, affordance reasoning, planning, multimodal foundation models">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning</title>
-<!-- GitHub Pages deployment trigger -->
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -25,23 +25,6 @@
   <script src="./static/js/index.js"></script>
 
   <style>
-    .coming-soon-card {
-      height: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .coming-soon-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
-    }
-
-    .coming-soon-card .icon {
-      color: #4A90E2;
-      margin-bottom: 12px;
-    }
-
     .anonymous-note {
       margin-top: 0.75rem;
       color: #666;
@@ -50,6 +33,11 @@
     .placeholder-button {
       pointer-events: none;
       opacity: 0.75;
+    }
+
+    .paper-figure {
+      border-radius: 12px;
+      width: 100%;
     }
   </style>
 </head>
@@ -144,62 +132,97 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="framework">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Coming Soon</h2>
 
-        <div class="columns is-multiline is-centered">
+        <h2 class="title is-3 has-text-centered">Framework Overview</h2>
 
-          <div class="column is-6">
-            <div class="card coming-soon-card">
-              <div class="card-content has-text-centered">
-                <span class="icon is-large">
-                  <i class="fas fa-project-diagram fa-2x"></i>
-                </span>
-                <h3 class="title is-5">Framework Overview</h3>
-                <p>Figures and method details will be released soon.</p>
-              </div>
-            </div>
-          </div>
+        <figure class="image">
+          <img src="./static/images/framework1.png"
+               alt="Functional latent space for affordance reasoning"
+               class="paper-figure">
+        </figure>
 
-          <div class="column is-6">
-            <div class="card coming-soon-card">
-              <div class="card-content has-text-centered">
-                <span class="icon is-large">
-                  <i class="fas fa-robot fa-2x"></i>
-                </span>
-                <h3 class="title is-5">Robot Demonstrations</h3>
-                <p>Videos and qualitative examples will be added soon.</p>
-              </div>
-            </div>
-          </div>
+        <div class="content has-text-justified mt-4">
+          <p>
+            <b>Functional Latent Space for Affordance Reasoning.</b>
+            A4Dance maps visual observations and affordance descriptions into a shared
+            functional latent space. For each affordance, we construct an affordance axis
+            between an affordance and its antonym (e.g., movable ↔ fixed). Visual
+            observations are projected onto these axes to infer task-relevant object
+            functionalities. Projection proximity is calibrated into uncertainty estimates,
+            enabling the system to identify when additional reasoning is required.
+          </p>
+        </div>
 
-          <div class="column is-6">
-            <div class="card coming-soon-card">
-              <div class="card-content has-text-centered">
-                <span class="icon is-large">
-                  <i class="fas fa-chart-line fa-2x"></i>
-                </span>
-                <h3 class="title is-5">Experiments</h3>
-                <p>Evaluation results and analysis will be posted soon.</p>
-              </div>
-            </div>
-          </div>
+        <br><br>
 
-          <div class="column is-6">
-            <div class="card coming-soon-card">
-              <div class="card-content has-text-centered">
-                <span class="icon is-large">
-                  <i class="fas fa-code fa-2x"></i>
-                </span>
-                <h3 class="title is-5">Resources</h3>
-                <p>Code, models, and datasets will be made available soon.</p>
-              </div>
-            </div>
-          </div>
+        <figure class="image">
+          <img src="./static/images/framework2.png"
+               alt="A4Dance generation and discovery pipeline"
+               class="paper-figure">
+        </figure>
 
+        <div class="content has-text-justified mt-4">
+          <p>
+            <b>Uncertainty-Aware Affordance Discovery.</b>
+            Given a task and visual observation, A4Dance first generates candidate
+            affordances relevant to the current planning problem. Affordance inference is
+            performed in the functional latent space, while calibrated uncertainty determines
+            whether existing affordances are sufficient. When uncertainty is high or a new
+            functionality is required, a vision-language model proposes and labels new
+            affordances, which are incorporated through offline learning and added to the
+            affordance memory for future deployment.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="demos">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3 has-text-centered">Demonstrations</h2>
+
+        <figure class="image">
+          <img src="./static/images/Qualitative_Demos.png"
+               alt="Qualitative demonstrations"
+               class="paper-figure">
+        </figure>
+
+        <div class="content has-text-justified mt-4">
+          <p>
+            A4Dance performs affordance-based decision making across diverse scenarios.
+            In the first example, the planner selects the cart as the most movable object
+            for the task. In the second example, existing affordances are insufficient,
+            triggering uncertainty-guided affordance discovery and introducing a new
+            traversable affordance to successfully complete the task.
+          </p>
+        </div>
+
+        <br><br>
+
+        <figure class="image">
+          <img src="./static/images/tabletop_demo.png"
+               alt="Robot arm deployment"
+               class="paper-figure">
+        </figure>
+
+        <div class="content has-text-justified mt-4">
+          <p>
+            A4Dance transfers across robot platforms and domains. The same affordance
+            generation, inference, and discovery framework is deployed on a tabletop robot
+            arm, demonstrating that affordance reasoning is not tied to a specific robot
+            platform. By conditioning generation and labeling on platform-specific
+            capabilities, A4Dance adapts affordance predictions to new robots and tasks
+            without modifying the underlying framework.
+          </p>
         </div>
 
       </div>
