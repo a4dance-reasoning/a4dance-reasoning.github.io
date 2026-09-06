@@ -34,7 +34,7 @@
 
 ## TL;DR
 
-A4D reasons about **what objects enable, not what they are** — mapping visual observations into a functional latent space structured around affordances (e.g., "movable") instead of appearance-based categories, and **discovering new affordances on the fly** when existing ones aren't enough. A4D achieves **94% inference accuracy** on existing affordances (+15 points over prior work), improves new-affordance inference from **70% to over 90%** with fewer than 10% of the original training data, and enables **100x faster** inference.
+A4D reasons about **what objects enable, not what they are** — mapping visual observations into a functional latent space structured around affordances (e.g., "movable") instead of appearance-based categories, and **discovering new affordances** when existing ones aren't enough. A4D achieves **94% inference accuracy** on existing affordances (+15 points over SOTA VLMs), improves new-affordance inference from **70% to over 90%** with fewer than 10% of the original training data, and enables **100x faster** inference.
 
 ---
 
