@@ -26,7 +26,8 @@
     <b><i>CoRL 2026</i></b>
     <h3 align="center">
         <a href="https://a4dance-reasoning.github.io/">Project Page</a> |
-        <a href="https://arxiv.org/abs/2606.05533">arXiv</a>
+        <a href="https://arxiv.org/abs/2606.05533">arXiv</a> |
+        <a href="https://huggingface.co/datasets/rohansiva/A4D-dataset">Dataset</a>
     </h3>
 </p>
 
