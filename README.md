@@ -27,7 +27,8 @@
     <h3 align="center">
         <a href="https://a4dance-reasoning.github.io/">Project Page</a> |
         <a href="https://arxiv.org/abs/2606.05533">arXiv</a> |
-        <a href="https://huggingface.co/datasets/rohansiva/A4D-dataset">Dataset</a>
+        <a href="https://huggingface.co/datasets/rohansiva/A4D-dataset">Dataset</a> |
+        <a href="https://huggingface.co/rohansiva/A4D-Checkpoint">Model Checkpoint</a>
     </h3>
 </p>
 
@@ -58,6 +59,26 @@ A4D performs affordance-based decision making across diverse scenarios. In the f
 <img src="docs/static/images/tabletop_demo.png" alt="Robot arm deployment" width="1000">
 
 A4D transfers across robot platforms and domains. The same affordance generation, inference, and discovery framework is deployed on a tabletop robot arm, demonstrating that affordance reasoning is not tied to a specific robot platform. By conditioning generation and labeling on platform-specific capabilities, A4D adapts affordance predictions to new robots and tasks without modifying the underlying framework.
+
+## Setup
+
+```bash
+pip install -r requirements.txt
+export OPENAI_API_KEY="your_api_key_here"  # only needed for affordance_generation.ipynb
+```
+
+## Demos
+
+1. [`affordance_generation.ipynb`](affordance_generation.ipynb) — open-vocabulary affordance discovery with a VLM.
+2. [`classification_uncertainty.ipynb`](classification_uncertainty.ipynb) — CLIP-based affordance classification with calibrated uncertainty.
+
+## Model Checkpoint
+
+Fine-tuned CLIP checkpoint on Hugging Face: [rohansiva/A4D-Checkpoint](https://huggingface.co/rohansiva/A4D-Checkpoint). Downloaded automatically by `classification_uncertainty.ipynb` if not present locally.
+
+## Dataset
+
+552 labeled images across 29 object classes and 10 affordances: [rohansiva/A4D-dataset](https://huggingface.co/datasets/rohansiva/A4D-dataset). A local copy also lives in [`publish_dataset/`](publish_dataset).
 
 ## Citation
 
