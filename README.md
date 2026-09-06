@@ -78,7 +78,45 @@ Fine-tuned CLIP checkpoint on Hugging Face: [rohansiva/A4D-Checkpoint](https://h
 
 ## Dataset
 
-552 labeled images across 29 object classes and 10 affordances: [rohansiva/A4D-dataset](https://huggingface.co/datasets/rohansiva/A4D-dataset). A local copy also lives in [`dataset/`](dataset).
+Binary affordance labels for real-world object images, used to train and evaluate A4D's classification, calibration, and discovery pipeline. Available on Hugging Face — [rohansiva/A4D-dataset](https://huggingface.co/datasets/rohansiva/A4D-dataset) — with a local copy in [`dataset/`](dataset).
+
+| | |
+|---|---:|
+| Images | 552 |
+| Object classes | 29 |
+| Affordances | 10 |
+| (image, affordance) labels | 5,096 |
+| Label balance | 2,146 positive / 2,950 negative |
+
+**Affordances**
+
+`containable` · `graspable` · `liftable` · `movable` · `openable` · `pushable` · `rollable` · `stackable` · `supportable` · `traversable`
+
+**Object classes**
+
+| Class | Count | Class | Count |
+|---|---:|---|---:|
+| cup | 30 | racket | 20 |
+| pot | 30 | sofa | 20 |
+| banana | 28 | spatula | 20 |
+| orange | 25 | tvm | 20 |
+| potted_plant | 25 | bin | 19 |
+| table | 21 | bowl | 19 |
+| bed | 20 | extinguisher | 19 |
+| chair | 20 | stairs | 17 |
+| drill | 20 | box | 16 |
+| hammer | 20 | bottle | 15 |
+| knife | 20 | can | 15 |
+| lamp | 20 | door | 15 |
+| pan | 20 | strawberry | 15 |
+| photo_frame | 20 | mouse | 2 |
+|  |  | cart | 1 |
+
+**Format** — one row per (image, affordance) pair in `dataset.jsonl`:
+
+```json
+{"image": "banana_000.jpg", "affordance": "containable", "label": 0}
+```
 
 ## Citation
 
