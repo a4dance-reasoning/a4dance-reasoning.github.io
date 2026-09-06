@@ -78,7 +78,7 @@ Fine-tuned CLIP checkpoint on Hugging Face: [rohansiva/A4D-Checkpoint](https://h
 
 ## Dataset
 
-552 labeled images across 29 object classes and 10 affordances: [rohansiva/A4D-dataset](https://huggingface.co/datasets/rohansiva/A4D-dataset). A local copy also lives in [`publish_dataset/`](publish_dataset).
+552 labeled images across 29 object classes and 10 affordances: [rohansiva/A4D-dataset](https://huggingface.co/datasets/rohansiva/A4D-dataset). A local copy also lives in [`dataset/`](dataset).
 
 ## Citation
 
