@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="A4Dance Reasoning.">
+  <meta name="description" content="A4D: Functional Latent Spaces for Affordance Reasoning.">
   <meta name="keywords" content="robotics, affordance reasoning, planning, multimodal foundation models">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning</title>
@@ -52,25 +52,39 @@
           <h1 class="title is-1 publication-title">What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning</h1>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Anonymous Authors</span>
+            <span class="author-block"><a href="https://rohan-siva.github.io/">Rohan Siva</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://neel1302.github.io/">Neel P. Bhatt</a><sup>1,2,*</sup>,</span>
+            <span class="author-block"><a href="https://yunhaoyang234.github.io/">Yunhao Yang</a><sup>1,2,*</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/seoyoung-lee-8b4036177/">Seoyoung Lee</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/nishant-gadde/">Nishant Gadde</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/christian-ellis-research/">Christian Ellis</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/alvaro-velasquez-b14963246/">Alvaro Velasquez</a><sup>2,3</sup>,</span>
+            <span class="author-block"><a href="https://express.adobe.com/page/CAdrFMJ9QeI2y/">Zhangyang Wang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.ae.utexas.edu/people/faculty/faculty-directory/topcu">Ufuk Topcu</a><sup>1,2</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>The University of Texas at Austin</span>
+            <span class="author-block"><sup>2</sup>Neurosymbolic Intelligence</span>
+            <span class="author-block"><sup>3</sup>University of Colorado Boulder</span>
           </div>
 
           <div class="is-size-6 publication-authors anonymous-note">
-            <span class="author-block">Project page under construction</span>
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
           </div>
 
          <div class="column has-text-centered">
         <div class="publication-links">
-      
+
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark placeholder-button">
+            <a href="https://arxiv.org/abs/2606.05533" class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
-                <i class="fas fa-file-pdf"></i>
+                <i class="ai ai-arxiv"></i>
               </span>
-              <span>Paper Coming Soon</span>
+              <span>arXiv</span>
             </a>
           </span>
-      
+
           <span class="link-block">
             <a class="external-link button is-normal is-rounded is-dark placeholder-button">
               <span class="icon">
@@ -138,11 +152,11 @@
             </p>
 
             <p>
-              We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce A4Dance, which maps visual observations into a shared latent space structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4Dance <em>infers</em> functionalities relevant to the observed object.
+              We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce A4D, which maps visual observations into a shared latent space structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4D <em>infers</em> functionalities relevant to the observed object.
             </p>
 
             <p>
-              Furthermore, we introduce an affordance <em>discovery</em> mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4Dance uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4Dance across several planning tasks involving diverse and unseen affordances. A4Dance achieves 94% inference accuracy on existing affordances, outperforming state-of-the-art approaches by over 15 percentage points, improves new affordance inference accuracy from 60% to 90% with less than 10% of the original training data, and enables 100x faster inference.
+              Furthermore, we introduce an affordance <em>discovery</em> mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4D uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4D across several planning tasks involving diverse and unseen affordances. A4D achieves 94% inference accuracy on existing affordances outperforming state-of-the-art approaches by over 15% points, improves new-affordance inference accuracy from 70% to over 90% with fewer than 10% of the original training data, and enables 100x faster inference.
             </p>
           </div>
         </div>
@@ -167,7 +181,7 @@
         <div class="content has-text-justified mt-4">
           <p>
             <b>Functional Latent Space for Affordance Reasoning.</b>
-            A4Dance maps visual observations and affordance descriptions into a shared
+            A4D maps visual observations and affordance descriptions into a shared
             functional latent space. For each affordance, we construct an affordance axis
             between an affordance and its antonym (e.g., movable ↔ fixed). Visual
             observations are projected onto these axes to infer task-relevant object
@@ -180,14 +194,14 @@
 
         <figure class="image">
           <img src="./static/images/framework2.png"
-               alt="A4Dance generation and discovery pipeline"
+               alt="A4D generation and discovery pipeline"
                class="paper-figure">
         </figure>
 
         <div class="content has-text-justified mt-4">
           <p>
             <b>Uncertainty-Aware Affordance Discovery.</b>
-            Given a task and visual observation, A4Dance first generates candidate
+            Given a task and visual observation, A4D first generates candidate
             affordances relevant to the current planning problem. Affordance inference is
             performed in the functional latent space, while calibrated uncertainty determines
             whether existing affordances are sufficient. When uncertainty is high or a new
@@ -217,7 +231,7 @@
 
         <div class="content has-text-justified mt-4">
           <p>
-            A4Dance performs affordance-based decision making across diverse scenarios.
+            A4D performs affordance-based decision making across diverse scenarios.
             In the first example, the planner selects the cart as the most movable object
             for the task. In the second example, existing affordances are insufficient,
             triggering uncertainty-guided affordance discovery and introducing a new
@@ -235,11 +249,11 @@
 
         <div class="content has-text-justified mt-4">
           <p>
-            A4Dance transfers across robot platforms and domains. The same affordance
+            A4D transfers across robot platforms and domains. The same affordance
             generation, inference, and discovery framework is deployed on a tabletop robot
             arm, demonstrating that affordance reasoning is not tied to a specific robot
             platform. By conditioning generation and labeling on platform-specific
-            capabilities, A4Dance adapts affordance predictions to new robots and tasks
+            capabilities, A4D adapts affordance predictions to new robots and tasks
             without modifying the underlying framework.
           </p>
         </div>
@@ -252,12 +266,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{a4dance2026functional,
-  title={What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning},
-  author={Anonymous Authors},
-  year={2026},
-  note={Coming soon}
-}</code></pre>
+    <pre><code><span style="color: red;">@inproceedings</span>{<span style="color: purple;">siva2026objectsenablearefunctional</span>,
+            title={What Objects Enable, Not What They Are: Functional Latent Spaces for Affordance Reasoning},
+            author={Rohan Siva and Neel P. Bhatt and Yunhao Yang and Seoyoung Lee and Nishant Gadde and Christian Ellis and Alvaro Velasquez and Zhangyang Wang and Ufuk Topcu},
+            year={2026},
+            booktitle={Proceedings of the Tenth Conference on Robot Learning},
+            address={Austin, TX, USA},
+            publisher={PMLR},
+      }</code></pre>
   </div>
 </section>
 
