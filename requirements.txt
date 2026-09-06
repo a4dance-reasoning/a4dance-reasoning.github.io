@@ -1,0 +1,15 @@
+torch>=2.9
+transformers>=4.40
+open_clip_torch>=3.3
+opencv-python-headless>=4.13
+typer>=0.27
+tqdm>=4.65
+openai>=1.34
+pillow>=11.0
+pandas>=2.3
+seaborn>=0.13
+matplotlib>=3.9
+scikit-learn>=1.7
+numpy>=2.0
+jupyter>=1.0
+huggingface_hub>=1.0
