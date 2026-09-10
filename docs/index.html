@@ -239,22 +239,22 @@
       
         </div>
       
-        <!-- Hero clips -->
-        <div class="columns is-centered" style="margin-top: 2rem;">
-          <div class="column is-6">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_arm.mp4" type="video/mp4">
-            </video>
-            <p class="is-size-7 has-text-centered mt-2">Tabletop manipulation</p>
-          </div>
-          <div class="column is-6">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_spot.mp4" type="video/mp4">
-            </video>
-            <p class="is-size-7 has-text-centered mt-2">Legged navigation — the cart is inferred <em>movable</em> and cleared from the path</p>
-          </div>
+        <!-- Hero clips: external + first-person, side by side -->
+        <div style="margin-top: 2rem;">
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_arm_left.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered mt-2 mb-4">
+            Manipulation — <em>“place the strawberry in the can.”</em> External view (left) and on-robot view (right).
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:820px; aspect-ratio:818/460; background:#000; border-radius:12px; display:block; margin:0 auto;">
+            <source src="./static/videos/clips/task_dog_left.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered mt-2">
+            Navigation — <em>“go to the far end of the hallway.”</em> A4D infers the cart is <em>movable</em> and clears it.
+          </p>
         </div>
       
       </div>
@@ -551,21 +551,22 @@
 
         <h2 class="title is-3 has-text-centered">Demonstrations</h2>
 
-        <div class="columns is-centered mb-2">
-          <div class="column is-7">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_quad.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered is-size-7 mt-2">Synchronized external and on-robot views; the green tag is A4D's live affordance inference.</p>
-          </div>
-          <div class="column is-5">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_arm_stack.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered is-size-7 mt-2">A second task &mdash; "stack the cube and orange on the book."</p>
-          </div>
+        <div class="mb-2">
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered is-size-7 mt-2 mb-4">
+            Manipulation — <em>“stack the cube and orange on the book.”</em> External (left) and on-robot (right) views;
+            the green tag is A4D's live affordance inference.
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:820px; aspect-ratio:818/460; background:#000; border-radius:12px; display:block; margin:0 auto;">
+            <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered is-size-7 mt-2">
+            Navigation — a second run of the hallway task.
+          </p>
         </div>
 
         <div class="has-text-centered mb-6">
