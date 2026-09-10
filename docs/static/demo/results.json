@@ -1,5 +1,5 @@
 {
- "base": [
+ "affordances": [
   "graspable",
   "liftable",
   "movable",
@@ -9,161 +9,17 @@
   "rollable",
   "openable"
  ],
- "discovered": [
-  "traversable"
- ],
  "antonyms": {
   "graspable": "slippery",
-  "movable": "anchored",
-  "stackable": "wobbly",
-  "supportable": "fragile",
   "liftable": "heavy",
-  "rollable": "fixed",
-  "openable": "sealed",
+  "movable": "anchored",
+  "supportable": "fragile",
   "containable": "solid",
-  "traversable": "blocked"
+  "stackable": "wobbly",
+  "rollable": "fixed",
+  "openable": "sealed"
  },
  "items": [
-  {
-   "image": "cart.png",
-   "object": "cart",
-   "results": {
-    "graspable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.214,
-     "sim_ant": 0.23,
-     "margin": -0.016,
-     "gt": 0
-    },
-    "liftable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.208,
-     "sim_ant": 0.234,
-     "margin": -0.026,
-     "gt": 0
-    },
-    "movable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.226,
-     "sim_ant": 0.233,
-     "margin": -0.007,
-     "gt": 1
-    },
-    "supportable": {
-     "pred": 1,
-     "conf": 0.836,
-     "sim_aff": 0.231,
-     "sim_ant": 0.215,
-     "margin": 0.017,
-     "gt": 1
-    },
-    "containable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.211,
-     "sim_ant": 0.227,
-     "margin": -0.016,
-     "gt": 1
-    },
-    "stackable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.199,
-     "sim_ant": 0.233,
-     "margin": -0.033,
-     "gt": 0
-    },
-    "rollable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.191,
-     "sim_ant": 0.233,
-     "margin": -0.042,
-     "gt": 1
-    },
-    "openable": {
-     "pred": 0,
-     "conf": 0.143,
-     "sim_aff": 0.214,
-     "sim_ant": 0.225,
-     "margin": -0.01,
-     "gt": 0
-    }
-   }
-  },
-  {
-   "image": "door_013.jpg",
-   "object": "door",
-   "results": {
-    "graspable": {
-     "pred": 1,
-     "conf": 0.929,
-     "sim_aff": 0.236,
-     "sim_ant": 0.211,
-     "margin": 0.024,
-     "gt": 1
-    },
-    "liftable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.206,
-     "sim_ant": 0.238,
-     "margin": -0.032,
-     "gt": 0
-    },
-    "movable": {
-     "pred": 0,
-     "conf": 0.973,
-     "sim_aff": 0.201,
-     "sim_ant": 0.244,
-     "margin": -0.042,
-     "gt": 0
-    },
-    "supportable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.194,
-     "sim_ant": 0.236,
-     "margin": -0.041,
-     "gt": 0
-    },
-    "containable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.21,
-     "sim_ant": 0.234,
-     "margin": -0.024,
-     "gt": 0
-    },
-    "stackable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.19,
-     "sim_ant": 0.235,
-     "margin": -0.045,
-     "gt": 0
-    },
-    "rollable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.193,
-     "sim_ant": 0.233,
-     "margin": -0.04,
-     "gt": 0
-    },
-    "openable": {
-     "pred": 1,
-     "conf": 0.961,
-     "sim_aff": 0.241,
-     "sim_ant": 0.209,
-     "margin": 0.031,
-     "gt": 1
-    }
-   }
-  },
   {
    "image": "cup_000.jpg",
    "object": "cup",
@@ -172,64 +28,64 @@
      "pred": 1,
      "conf": 0.929,
      "sim_aff": 0.234,
-     "sim_ant": 0.201,
-     "margin": 0.033,
+     "sim_ant": 0.2014,
+     "margin": 0.0325,
      "gt": 1
     },
     "liftable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.237,
-     "sim_ant": 0.19,
-     "margin": 0.046,
+     "sim_aff": 0.2366,
+     "sim_ant": 0.1905,
+     "margin": 0.0461,
      "gt": 1
     },
     "movable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.237,
-     "sim_ant": 0.18,
-     "margin": 0.057,
+     "sim_aff": 0.2367,
+     "sim_ant": 0.1795,
+     "margin": 0.0572,
      "gt": 1
     },
     "supportable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.193,
-     "sim_ant": 0.235,
-     "margin": -0.042,
+     "sim_aff": 0.1929,
+     "sim_ant": 0.2353,
+     "margin": -0.0424,
      "gt": 0
     },
     "containable": {
      "pred": 1,
      "conf": 0.961,
-     "sim_aff": 0.24,
-     "sim_ant": 0.209,
-     "margin": 0.031,
+     "sim_aff": 0.2397,
+     "sim_ant": 0.2091,
+     "margin": 0.0306,
      "gt": 1
     },
     "stackable": {
      "pred": 1,
      "conf": 0.961,
-     "sim_aff": 0.239,
-     "sim_ant": 0.198,
-     "margin": 0.042,
+     "sim_aff": 0.2392,
+     "sim_ant": 0.1976,
+     "margin": 0.0416,
      "gt": 1
     },
     "rollable": {
      "pred": 0,
      "conf": 0.333,
-     "sim_aff": 0.207,
-     "sim_ant": 0.231,
-     "margin": -0.023,
+     "sim_aff": 0.2073,
+     "sim_ant": 0.2307,
+     "margin": -0.0234,
      "gt": 0
     },
     "openable": {
      "pred": 0,
      "conf": 0.696,
-     "sim_aff": 0.211,
-     "sim_ant": 0.231,
-     "margin": -0.02,
+     "sim_aff": 0.2109,
+     "sim_ant": 0.2311,
+     "margin": -0.0202,
      "gt": 0
     }
    }
@@ -241,205 +97,65 @@
     "graspable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.235,
-     "sim_ant": 0.191,
-     "margin": 0.045,
+     "sim_aff": 0.2355,
+     "sim_ant": 0.1905,
+     "margin": 0.0449,
      "gt": 1
     },
     "liftable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.235,
-     "sim_ant": 0.185,
-     "margin": 0.051,
+     "sim_aff": 0.2351,
+     "sim_ant": 0.1845,
+     "margin": 0.0506,
      "gt": 1
     },
     "movable": {
      "pred": 1,
      "conf": 0.929,
      "sim_aff": 0.236,
-     "sim_ant": 0.173,
-     "margin": 0.063,
+     "sim_ant": 0.1725,
+     "margin": 0.0635,
      "gt": 1
     },
     "supportable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.178,
-     "sim_ant": 0.235,
-     "margin": -0.057,
+     "sim_aff": 0.1778,
+     "sim_ant": 0.2349,
+     "margin": -0.0571,
      "gt": 0
     },
     "containable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.197,
-     "sim_ant": 0.235,
-     "margin": -0.038,
+     "sim_aff": 0.1973,
+     "sim_ant": 0.2348,
+     "margin": -0.0376,
      "gt": 0
     },
     "stackable": {
      "pred": 0,
      "conf": 0.333,
-     "sim_aff": 0.206,
-     "sim_ant": 0.227,
+     "sim_aff": 0.2062,
+     "sim_ant": 0.2273,
      "margin": -0.021,
      "gt": 0
     },
     "rollable": {
      "pred": 1,
      "conf": 1.0,
-     "sim_aff": 0.246,
-     "sim_ant": 0.22,
-     "margin": 0.026,
+     "sim_aff": 0.2456,
+     "sim_ant": 0.2199,
+     "margin": 0.0256,
      "gt": 1
     },
     "openable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.193,
-     "sim_ant": 0.233,
-     "margin": -0.041,
-     "gt": 0
-    }
-   }
-  },
-  {
-   "image": "box_000.jpg",
-   "object": "box",
-   "results": {
-    "graspable": {
-     "pred": 1,
-     "conf": 0.929,
-     "sim_aff": 0.235,
-     "sim_ant": 0.193,
-     "margin": 0.042,
-     "gt": 1
-    },
-    "liftable": {
-     "pred": 1,
-     "conf": 0.929,
-     "sim_aff": 0.236,
-     "sim_ant": 0.194,
-     "margin": 0.042,
-     "gt": 1
-    },
-    "movable": {
-     "pred": 1,
-     "conf": 0.929,
-     "sim_aff": 0.235,
-     "sim_ant": 0.182,
-     "margin": 0.053,
-     "gt": 1
-    },
-    "supportable": {
-     "pred": 1,
-     "conf": 0.929,
-     "sim_aff": 0.234,
-     "sim_ant": 0.217,
-     "margin": 0.017,
-     "gt": 1
-    },
-    "containable": {
-     "pred": 1,
-     "conf": 0.961,
-     "sim_aff": 0.24,
-     "sim_ant": 0.194,
-     "margin": 0.046,
-     "gt": 1
-    },
-    "stackable": {
-     "pred": 1,
-     "conf": 0.961,
-     "sim_aff": 0.242,
-     "sim_ant": 0.194,
-     "margin": 0.047,
-     "gt": 1
-    },
-    "rollable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.217,
-     "sim_ant": 0.227,
-     "margin": -0.011,
-     "gt": 0
-    },
-    "openable": {
-     "pred": 1,
-     "conf": 0.961,
-     "sim_aff": 0.239,
-     "sim_ant": 0.201,
-     "margin": 0.038,
-     "gt": 1
-    }
-   }
-  },
-  {
-   "image": "stairs_004.jpg",
-   "object": "stairs",
-   "results": {
-    "graspable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.226,
-     "sim_ant": 0.228,
-     "margin": -0.002,
-     "gt": 0
-    },
-    "liftable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.219,
-     "sim_ant": 0.23,
-     "margin": -0.011,
-     "gt": 0
-    },
-    "movable": {
-     "pred": 1,
-     "conf": 0.778,
-     "sim_aff": 0.226,
-     "sim_ant": 0.226,
-     "margin": 0.0,
-     "gt": 0
-    },
-    "supportable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.226,
-     "sim_ant": 0.227,
-     "margin": -0.001,
-     "gt": 1
-    },
-    "containable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.22,
-     "sim_ant": 0.227,
-     "margin": -0.007,
-     "gt": 0
-    },
-    "stackable": {
-     "pred": 0,
-     "conf": 0.333,
-     "sim_aff": 0.215,
-     "sim_ant": 0.23,
-     "margin": -0.014,
-     "gt": 0
-    },
-    "rollable": {
-     "pred": 0,
-     "conf": 0.9,
-     "sim_aff": 0.197,
-     "sim_ant": 0.235,
-     "margin": -0.038,
-     "gt": 0
-    },
-    "openable": {
-     "pred": 1,
-     "conf": 0.778,
-     "sim_aff": 0.225,
-     "sim_ant": 0.223,
-     "margin": 0.002,
+     "sim_aff": 0.1929,
+     "sim_ant": 0.2335,
+     "margin": -0.0406,
      "gt": 0
     }
    }
@@ -451,66 +167,136 @@
     "graspable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.19,
-     "sim_ant": 0.237,
-     "margin": -0.047,
+     "sim_aff": 0.1902,
+     "sim_ant": 0.2373,
+     "margin": -0.0471,
      "gt": 0
     },
     "liftable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.189,
-     "sim_ant": 0.239,
-     "margin": -0.05,
+     "sim_aff": 0.1888,
+     "sim_ant": 0.2387,
+     "margin": -0.0499,
      "gt": 0
     },
     "movable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.21,
-     "sim_ant": 0.241,
-     "margin": -0.031,
+     "sim_aff": 0.2103,
+     "sim_ant": 0.2408,
+     "margin": -0.0305,
      "gt": 0
     },
     "supportable": {
      "pred": 1,
      "conf": 0.961,
-     "sim_aff": 0.238,
-     "sim_ant": 0.194,
-     "margin": 0.044,
+     "sim_aff": 0.2383,
+     "sim_ant": 0.1943,
+     "margin": 0.0441,
      "gt": 1
     },
     "containable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.179,
-     "sim_ant": 0.234,
-     "margin": -0.056,
+     "sim_aff": 0.1787,
+     "sim_ant": 0.2345,
+     "margin": -0.0557,
      "gt": 0
     },
     "stackable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.179,
-     "sim_ant": 0.236,
-     "margin": -0.058,
+     "sim_aff": 0.1789,
+     "sim_ant": 0.2365,
+     "margin": -0.0576,
      "gt": 0
     },
     "rollable": {
      "pred": 0,
      "conf": 0.333,
-     "sim_aff": 0.168,
-     "sim_ant": 0.23,
-     "margin": -0.063,
+     "sim_aff": 0.1679,
+     "sim_ant": 0.2305,
+     "margin": -0.0626,
      "gt": 0
     },
     "openable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.184,
-     "sim_ant": 0.233,
-     "margin": -0.049,
+     "sim_aff": 0.1837,
+     "sim_ant": 0.2329,
+     "margin": -0.0492,
      "gt": 0
+    }
+   }
+  },
+  {
+   "image": "box_000.jpg",
+   "object": "box",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2354,
+     "sim_ant": 0.1929,
+     "margin": 0.0425,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.236,
+     "sim_ant": 0.1935,
+     "margin": 0.0425,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2346,
+     "sim_ant": 0.1816,
+     "margin": 0.053,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2344,
+     "sim_ant": 0.2173,
+     "margin": 0.0171,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2402,
+     "sim_ant": 0.1942,
+     "margin": 0.046,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2416,
+     "sim_ant": 0.1941,
+     "margin": 0.0475,
+     "gt": 1
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2165,
+     "sim_ant": 0.2273,
+     "margin": -0.0108,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2389,
+     "sim_ant": 0.2007,
+     "margin": 0.0381,
+     "gt": 1
     }
    }
   },
@@ -521,65 +307,625 @@
     "graspable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.235,
-     "sim_ant": 0.2,
-     "margin": 0.034,
+     "sim_aff": 0.2347,
+     "sim_ant": 0.2005,
+     "margin": 0.0342,
      "gt": 1
     },
     "liftable": {
      "pred": 1,
      "conf": 0.929,
      "sim_aff": 0.235,
-     "sim_ant": 0.202,
-     "margin": 0.033,
+     "sim_ant": 0.2022,
+     "margin": 0.0328,
      "gt": 1
     },
     "movable": {
      "pred": 1,
      "conf": 0.929,
-     "sim_aff": 0.232,
-     "sim_ant": 0.188,
-     "margin": 0.043,
+     "sim_aff": 0.2319,
+     "sim_ant": 0.1885,
+     "margin": 0.0435,
      "gt": 1
     },
     "supportable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.191,
-     "sim_ant": 0.234,
+     "sim_aff": 0.1907,
+     "sim_ant": 0.2337,
      "margin": -0.043,
      "gt": 0
     },
     "containable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.199,
-     "sim_ant": 0.237,
-     "margin": -0.038,
+     "sim_aff": 0.1986,
+     "sim_ant": 0.2368,
+     "margin": -0.0382,
      "gt": 0
     },
     "stackable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.207,
-     "sim_ant": 0.233,
+     "sim_aff": 0.2068,
+     "sim_ant": 0.2328,
      "margin": -0.026,
      "gt": 0
     },
     "rollable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.206,
-     "sim_ant": 0.232,
-     "margin": -0.026,
+     "sim_aff": 0.2057,
+     "sim_ant": 0.2319,
+     "margin": -0.0261,
      "gt": 0
     },
     "openable": {
      "pred": 0,
      "conf": 0.9,
-     "sim_aff": 0.198,
+     "sim_aff": 0.1977,
+     "sim_ant": 0.2352,
+     "margin": -0.0376,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "door_013.jpg",
+   "object": "door",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2356,
+     "sim_ant": 0.2112,
+     "margin": 0.0244,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.2055,
+     "sim_ant": 0.2376,
+     "margin": -0.0321,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.973,
+     "sim_aff": 0.2015,
+     "sim_ant": 0.2438,
+     "margin": -0.0423,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1944,
+     "sim_ant": 0.2357,
+     "margin": -0.0413,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.2098,
+     "sim_ant": 0.2341,
+     "margin": -0.0243,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1903,
+     "sim_ant": 0.2353,
+     "margin": -0.045,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1934,
+     "sim_ant": 0.233,
+     "margin": -0.0396,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2405,
+     "sim_ant": 0.2095,
+     "margin": 0.0311,
+     "gt": 1
+    }
+   }
+  },
+  {
+   "image": "banana_003.jpg",
+   "object": "banana",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2369,
+     "sim_ant": 0.1955,
+     "margin": 0.0415,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2359,
+     "sim_ant": 0.1922,
+     "margin": 0.0436,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2324,
+     "sim_ant": 0.1865,
+     "margin": 0.0459,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1881,
+     "sim_ant": 0.2348,
+     "margin": -0.0467,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1961,
+     "sim_ant": 0.236,
+     "margin": -0.0399,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.2037,
+     "sim_ant": 0.2354,
+     "margin": -0.0317,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2152,
+     "sim_ant": 0.2281,
+     "margin": -0.013,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1906,
+     "sim_ant": 0.2358,
+     "margin": -0.0452,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "sofa_005.jpg",
+   "object": "sofa",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.195,
+     "sim_ant": 0.2373,
+     "margin": -0.0423,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1942,
+     "sim_ant": 0.2373,
+     "margin": -0.0431,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.214,
+     "sim_ant": 0.236,
+     "margin": -0.022,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2395,
+     "sim_ant": 0.1994,
+     "margin": 0.0402,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1846,
+     "sim_ant": 0.2331,
+     "margin": -0.0485,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.183,
+     "sim_ant": 0.2353,
+     "margin": -0.0523,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.1719,
+     "sim_ant": 0.2305,
+     "margin": -0.0586,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1878,
+     "sim_ant": 0.2324,
+     "margin": -0.0447,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "table_005.jpg",
+   "object": "table",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.2025,
      "sim_ant": 0.235,
-     "margin": -0.038,
+     "margin": -0.0325,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.202,
+     "sim_ant": 0.2361,
+     "margin": -0.0341,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2213,
+     "sim_ant": 0.2305,
+     "margin": -0.0092,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2352,
+     "sim_ant": 0.206,
+     "margin": 0.0292,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1978,
+     "sim_ant": 0.2317,
+     "margin": -0.034,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1919,
+     "sim_ant": 0.2338,
+     "margin": -0.0419,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1712,
+     "sim_ant": 0.2331,
+     "margin": -0.062,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.1961,
+     "sim_ant": 0.2301,
+     "margin": -0.034,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "hammer_015.jpg",
+   "object": "hammer",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.2279,
+     "sim_ant": 0.2154,
+     "margin": 0.0125,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.5,
+     "sim_aff": 0.2221,
+     "sim_ant": 0.2212,
+     "margin": 0.0009,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.2288,
+     "sim_ant": 0.2114,
+     "margin": 0.0174,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2122,
+     "sim_ant": 0.2267,
+     "margin": -0.0145,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2116,
+     "sim_ant": 0.2282,
+     "margin": -0.0166,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2122,
+     "sim_ant": 0.2281,
+     "margin": -0.0159,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.205,
+     "sim_ant": 0.2324,
+     "margin": -0.0274,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.193,
+     "sim_aff": 0.2154,
+     "sim_ant": 0.2251,
+     "margin": -0.0097,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "can_005.jpg",
+   "object": "can",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.934,
+     "sim_aff": 0.2379,
+     "sim_ant": 0.1788,
+     "margin": 0.059,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2352,
+     "sim_ant": 0.1797,
+     "margin": 0.0554,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2324,
+     "sim_ant": 0.1677,
+     "margin": 0.0647,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1949,
+     "sim_ant": 0.2344,
+     "margin": -0.0395,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2385,
+     "sim_ant": 0.1925,
+     "margin": 0.046,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 1,
+     "conf": 0.946,
+     "sim_aff": 0.238,
+     "sim_ant": 0.188,
+     "margin": 0.05,
+     "gt": 1
+    },
+    "rollable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2426,
+     "sim_ant": 0.2154,
+     "margin": 0.0272,
+     "gt": 1
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2385,
+     "sim_ant": 0.1969,
+     "margin": 0.0416,
+     "gt": 1
+    }
+   }
+  },
+  {
+   "image": "pot_005.jpg",
+   "object": "pot",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2365,
+     "sim_ant": 0.1854,
+     "margin": 0.0512,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2362,
+     "sim_ant": 0.1865,
+     "margin": 0.0497,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.2317,
+     "sim_ant": 0.1746,
+     "margin": 0.0571,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1931,
+     "sim_ant": 0.2323,
+     "margin": -0.0392,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.2408,
+     "sim_ant": 0.1981,
+     "margin": 0.0427,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 1,
+     "conf": 0.955,
+     "sim_aff": 0.2381,
+     "sim_ant": 0.1893,
+     "margin": 0.0488,
+     "gt": 1
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.211,
+     "sim_ant": 0.2271,
+     "margin": -0.0161,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.24,
+     "sim_ant": 0.2042,
+     "margin": 0.0357,
+     "gt": 1
+    }
+   }
+  },
+  {
+   "image": "stairs_004.jpg",
+   "object": "stairs",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2257,
+     "sim_ant": 0.2276,
+     "margin": -0.0019,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2194,
+     "sim_ant": 0.2303,
+     "margin": -0.0108,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.2261,
+     "sim_ant": 0.2259,
+     "margin": 0.0003,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2257,
+     "sim_ant": 0.227,
+     "margin": -0.0013,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.22,
+     "sim_ant": 0.2274,
+     "margin": -0.0074,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.2152,
+     "sim_ant": 0.2297,
+     "margin": -0.0145,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.1971,
+     "sim_ant": 0.2353,
+     "margin": -0.0382,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.2253,
+     "sim_ant": 0.2232,
+     "margin": 0.0021,
      "gt": 0
     }
    }
@@ -594,9 +940,9 @@
     "antonym": "solid",
     "pred": 1,
     "conf": 0.961,
-    "sim_aff": 0.24,
-    "sim_ant": 0.209,
-    "margin": 0.031,
+    "sim_aff": 0.2397,
+    "sim_ant": 0.2091,
+    "margin": 0.0306,
     "blurb": "A cup is built to hold things."
    },
    {
@@ -606,9 +952,9 @@
     "antonym": "fixed",
     "pred": 1,
     "conf": 1.0,
-    "sim_aff": 0.246,
-    "sim_ant": 0.22,
-    "margin": 0.026,
+    "sim_aff": 0.2456,
+    "sim_ant": 0.2199,
+    "margin": 0.0256,
     "blurb": "A round fruit rolls freely."
    },
    {
@@ -618,9 +964,9 @@
     "antonym": "fragile",
     "pred": 1,
     "conf": 0.961,
-    "sim_aff": 0.238,
-    "sim_ant": 0.194,
-    "margin": 0.044,
+    "sim_aff": 0.2383,
+    "sim_ant": 0.1943,
+    "margin": 0.0441,
     "blurb": "A bed is made to rest on."
    },
    {
@@ -630,9 +976,9 @@
     "antonym": "anchored",
     "pred": 0,
     "conf": 0.973,
-    "sim_aff": 0.201,
-    "sim_ant": 0.244,
-    "margin": -0.042,
+    "sim_aff": 0.2015,
+    "sim_ant": 0.2438,
+    "margin": -0.0423,
     "blurb": "A door is hinged in place \u2014 you can't just carry it off."
    },
    {
@@ -642,9 +988,9 @@
     "antonym": "wobbly",
     "pred": 1,
     "conf": 0.961,
-    "sim_aff": 0.242,
-    "sim_ant": 0.194,
-    "margin": 0.047,
+    "sim_aff": 0.2416,
+    "sim_ant": 0.1941,
+    "margin": 0.0475,
     "blurb": "Flat, rigid sides make it easy to stack."
    },
    {
@@ -654,9 +1000,9 @@
     "antonym": "slippery",
     "pred": 1,
     "conf": 0.929,
-    "sim_aff": 0.235,
-    "sim_ant": 0.2,
-    "margin": 0.034,
+    "sim_aff": 0.2347,
+    "sim_ant": 0.2005,
+    "margin": 0.0342,
     "blurb": "A handle sized for the hand."
    }
   ],
@@ -668,23 +1014,37 @@
     "antonym": "fragile",
     "pred": 0,
     "conf": 0.333,
-    "sim_aff": 0.226,
+    "sim_aff": 0.2257,
     "sim_ant": 0.227,
-    "margin": -0.001,
+    "margin": -0.0013,
     "blurb": "Can you rest on a staircase? The projection lands right on the boundary between \u201csupportable\u201d and \u201cfragile.\u201d"
    },
    {
-    "image": "cart.png",
-    "object": "cart",
-    "affordance": "containable",
-    "antonym": "solid",
-    "pred": 0,
-    "conf": 0.333,
-    "sim_aff": 0.211,
-    "sim_ant": 0.227,
-    "margin": -0.016,
-    "blurb": "Is a flat platform cart a container? Even people disagree \u2014 and the model's projection reflects that."
+    "image": "hammer_015.jpg",
+    "object": "hammer",
+    "affordance": "liftable",
+    "antonym": "heavy",
+    "pred": 1,
+    "conf": 0.5,
+    "sim_aff": 0.2221,
+    "sim_ant": 0.2212,
+    "margin": 0.0009,
+    "blurb": "Liftable? Barely \u2014 a hammer's dense head puts the projection right on the edge."
    }
   ]
- }
+ },
+ "gallery": [
+  "cup_000.jpg",
+  "orange_000.jpg",
+  "bed_000.jpg",
+  "box_000.jpg",
+  "knife_000.jpg",
+  "door_013.jpg",
+  "banana_003.jpg",
+  "sofa_005.jpg",
+  "table_005.jpg",
+  "hammer_015.jpg",
+  "can_005.jpg",
+  "pot_005.jpg"
+ ]
 }

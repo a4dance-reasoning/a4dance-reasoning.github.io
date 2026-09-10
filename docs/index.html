@@ -114,6 +114,47 @@
       border-left: 3px solid #e8a33d; padding-left: 0.7rem;
     }
     #trydemo .note.ok { border-left-color: #1a9850; }
+
+    #trydemo .explore-head {
+      text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #9a9a9a; margin: 1.75rem 0 1rem;
+      border-top: 1px solid #e5e5e5; padding-top: 1.25rem;
+    }
+    #trydemo .gallery {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 8px; margin-bottom: 0.5rem;
+    }
+    #trydemo .gallery img {
+      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px;
+      cursor: pointer; border: 3px solid transparent; transition: border-color 0.15s ease;
+    }
+    #trydemo .gallery img:hover { border-color: #b9d4f2; }
+    #trydemo .gallery img.sel { border-color: #4A90E2; }
+    #trydemo .aff-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+    #trydemo .aff-btn {
+      padding: 0.35rem 0.8rem; border: 1px solid #d0d0d0; border-radius: 8px;
+      background: #fff; font-size: 0.9rem; cursor: pointer; transition: all 0.15s ease;
+    }
+    #trydemo .aff-btn:hover { border-color: #4A90E2; color: #4A90E2; }
+    #trydemo .aff-btn.active { background: #4A90E2; border-color: #4A90E2; color: #fff; }
+
+    #trydemo .profile {
+      margin-top: 1.25rem; background: #fff; border-radius: 14px; padding: 1.25rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    #trydemo .profile-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.85rem; }
+    #trydemo .profile-row {
+      display: flex; align-items: center; gap: 0.75rem; padding: 0.3rem 0.4rem;
+      border-radius: 6px; cursor: pointer;
+    }
+    #trydemo .profile-row:hover { background: #f4f8fd; }
+    #trydemo .profile-row.sel { background: #eaf2fc; }
+    #trydemo .pr-lab { flex: 0 0 96px; font-size: 0.88rem; }
+    #trydemo .pr-bar { flex: 1 1 auto; height: 10px; border-radius: 5px; background: #ececec; overflow: hidden; }
+    #trydemo .pr-bar > span { display: block; height: 100%; border-radius: 5px; }
+    #trydemo .pr-bar > span.y { background: #1a9850; }
+    #trydemo .pr-bar > span.n { background: #d8b0af; }
+    #trydemo .pr-val { flex: 0 0 76px; text-align: right; font-size: 0.8rem; color: #777; }
   </style>
 </head>
 
@@ -256,18 +297,25 @@
 
         <h2 class="title is-3 has-text-centered">Try A4D</h2>
         <p class="has-text-centered content mb-5">
-          Each query runs the fine-tuned model on a real image: it projects the image onto the
-          affordance axis and calibrates the projection into a confidence score. Pick an example.
+          Every result below is the fine-tuned model run on a real image &mdash; it projects the image
+          onto each affordance axis and calibrates the projection into a confidence score. Start from a
+          highlight, or pick any object and affordance yourself.
         </p>
 
         <div class="preset-group">
-          <div class="preset-label">High confidence</div>
+          <div class="preset-label">Highlights &mdash; confident &amp; decisive</div>
           <div id="chips-confident"></div>
         </div>
         <div class="preset-group">
-          <div class="preset-label">Low confidence &mdash; A4D defers to a VLM</div>
+          <div class="preset-label">Highlights &mdash; low confidence, A4D defers to a VLM</div>
           <div id="chips-lowconf"></div>
         </div>
+
+        <div class="explore-head">Or explore</div>
+        <div class="preset-label">1 &nbsp;&middot;&nbsp; Pick an object</div>
+        <div id="demo-gallery" class="gallery"></div>
+        <div class="preset-label mt-4">2 &nbsp;&middot;&nbsp; Pick an affordance</div>
+        <div id="demo-affs" class="aff-btns"></div>
 
         <div class="stage" id="demo-stage">
           <img id="demo-img" alt="">
@@ -293,6 +341,11 @@
           </div>
         </div>
 
+        <div class="profile" id="demo-profile">
+          <div class="profile-title">What this <span id="prof-obj"></span> enables &mdash; all eight affordances</div>
+          <div id="prof-rows"></div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -301,62 +354,140 @@
 <script>
 (function () {
   var CONF_THRESHOLD = 0.7;
+  var el = function (id) { return document.getElementById(id); };
+
   fetch('./static/demo/results.json').then(function (r) { return r.json(); }).then(function (data) {
-    var presets = data.presets;
-    var el = function (id) { return document.getElementById(id); };
+    var AFFS = data.affordances;
+    var byImage = {};
+    data.items.forEach(function (it) { byImage[it.image] = it; });
 
-    function render(p) {
-      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
-        c.classList.toggle('active', c.dataset.key === p.image + '|' + p.affordance);
+    var state = { image: data.presets.confident[0].image, aff: data.presets.confident[0].affordance };
+
+    var simScale = function (s) { return Math.max(6, Math.min(100, (s - 0.16) / 0.11 * 100)); };
+
+    function renderProfile(item) {
+      el('prof-obj').textContent = item.object;
+      var rows = AFFS.map(function (a) {
+        return { a: a, r: item.results[a] };
+      }).sort(function (x, y) {
+        if (x.r.pred !== y.r.pred) return y.r.pred - x.r.pred;      // yes rows first
+        return x.r.pred === 1 ? y.r.conf - x.r.conf                  // strongest yes on top
+                              : x.r.conf - y.r.conf;                 // least-certain no just below the yes block
       });
-      el('demo-img').src = './static/demo/img/' + p.image;
-      el('demo-img').alt = p.object + ' — ' + p.affordance;
-      el('demo-query').textContent = 'Is this ' + p.object + ' “' + p.affordance + '”?';
-
-      var v = el('demo-verdict');
-      v.innerHTML = p.pred === 1
-        ? '<span class="yes">Yes</span>'
-        : '<span class="no">No</span>';
-
-      var pct = Math.round(p.conf * 100);
-      el('demo-conf-val').textContent = pct + '%';
-      var cb = el('demo-conf-bar');
-      cb.className = 'bar ' + (p.conf >= CONF_THRESHOLD ? 'conf-hi' : 'conf-lo');
-      cb.firstElementChild.style.width = pct + '%';
-
-      el('demo-aff-name').textContent = '“' + p.affordance + '”';
-      el('demo-ant-name').textContent = '“' + p.antonym + '”';
-      // similarities are ~0.18-0.26; rescale to a readable 0-100 band
-      var scale = function (s) { return Math.max(6, Math.min(100, (s - 0.16) / 0.11 * 100)); };
-      el('demo-sim-aff').style.width = scale(p.sim_aff) + '%';
-      el('demo-sim-ant').style.width = scale(p.sim_ant) + '%';
-
-      var note = el('demo-note');
-      if (p.conf >= CONF_THRESHOLD) {
-        note.className = 'note ok';
-        note.textContent = p.blurb + ' A4D is confident enough to act on this directly.';
-      } else {
-        note.className = 'note';
-        note.textContent = p.blurb + ' With confidence this low, A4D routes the call to a VLM rather than committing.';
-      }
+      el('prof-rows').innerHTML = rows.map(function (o) {
+        var yes = o.r.pred === 1;
+        var w = Math.max(6, Math.round(o.r.conf * 100));
+        return '<div class="profile-row' + (o.a === state.aff ? ' sel' : '') +
+          '" data-aff="' + o.a + '">' +
+          '<span class="pr-lab">' + o.a + '</span>' +
+          '<span class="pr-bar"><span class="' + (yes ? 'y' : 'n') + '" style="width:' + w + '%"></span></span>' +
+          '<span class="pr-val">' + (yes ? 'yes' : 'no') + ' · ' + Math.round(o.r.conf * 100) + '%</span>' +
+          '</div>';
+      }).join('');
+      Array.prototype.forEach.call(el('prof-rows').children, function (row) {
+        row.onclick = function () { select(state.image, row.dataset.aff); };
+      });
     }
 
+    function render() {
+      var item = byImage[state.image];
+      var r = item.results[state.aff];
+      var antonym = data.antonyms[state.aff];
+
+      Array.prototype.forEach.call(el('demo-gallery').children, function (t) {
+        t.classList.toggle('sel', t.dataset.image === state.image);
+      });
+      Array.prototype.forEach.call(el('demo-affs').children, function (b) {
+        b.classList.toggle('active', b.dataset.aff === state.aff);
+      });
+      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.key === state.image + '|' + state.aff);
+      });
+
+      el('demo-img').src = './static/demo/img/' + state.image;
+      el('demo-img').alt = item.object + ' — ' + state.aff;
+      el('demo-query').textContent = 'Is this ' + item.object + ' “' + state.aff + '”?';
+      el('demo-verdict').innerHTML = r.pred === 1
+        ? '<span class="yes">Yes</span>' : '<span class="no">No</span>';
+
+      var pct = Math.round(r.conf * 100);
+      el('demo-conf-val').textContent = pct + '%';
+      var cb = el('demo-conf-bar');
+      cb.className = 'bar ' + (r.conf >= CONF_THRESHOLD ? 'conf-hi' : 'conf-lo');
+      cb.firstElementChild.style.width = pct + '%';
+
+      el('demo-aff-name').textContent = '“' + state.aff + '”';
+      el('demo-ant-name').textContent = '“' + antonym + '”';
+      el('demo-sim-aff').style.width = simScale(r.sim_aff) + '%';
+      el('demo-sim-ant').style.width = simScale(r.sim_ant) + '%';
+
+      var preset = null;
+      ['confident', 'lowconf'].forEach(function (g) {
+        data.presets[g].forEach(function (p) {
+          if (p.image === state.image && p.affordance === state.aff) preset = p;
+        });
+      });
+      var note = el('demo-note');
+      if (r.conf >= CONF_THRESHOLD) {
+        note.className = 'note ok';
+        note.textContent = (preset ? preset.blurb + ' ' : '') + 'Confidence is high — A4D acts on this directly.';
+      } else {
+        note.className = 'note';
+        note.textContent = (preset ? preset.blurb + ' ' : '') +
+          'The projection sits near the decision boundary, so calibrated confidence stays low and A4D routes the call to a VLM rather than committing.';
+      }
+
+      renderProfile(item);
+    }
+
+    function select(image, aff) {
+      state.image = image; state.aff = aff; render();
+    }
+
+    // highlight chips
     function addChips(containerId, list) {
-      var c = document.getElementById(containerId);
+      var c = el(containerId);
       list.forEach(function (p) {
         var b = document.createElement('span');
         b.className = 'chip';
         b.dataset.key = p.image + '|' + p.affordance;
         b.textContent = p.object + ' · ' + p.affordance;
-        b.onclick = function () { render(p); };
+        b.onclick = function () { select(p.image, p.affordance); };
         c.appendChild(b);
       });
     }
-    addChips('chips-confident', presets.confident);
-    addChips('chips-lowconf', presets.lowconf);
-    render(presets.confident[0]);
+    addChips('chips-confident', data.presets.confident);
+    addChips('chips-lowconf', data.presets.lowconf);
+
+    // gallery (curated subset)
+    var g = el('demo-gallery');
+    (data.gallery || data.items.map(function (i) { return i.image; })).forEach(function (img) {
+      var it = byImage[img];
+      if (!it) return;
+      var t = document.createElement('img');
+      t.src = './static/demo/img/' + img;
+      t.alt = it.object;
+      t.title = it.object;
+      t.dataset.image = img;
+      t.loading = 'lazy';
+      t.onclick = function () { select(img, state.aff); };
+      g.appendChild(t);
+    });
+
+    // affordance buttons
+    var ab = el('demo-affs');
+    AFFS.forEach(function (a) {
+      var b = document.createElement('button');
+      b.className = 'aff-btn';
+      b.dataset.aff = a;
+      b.textContent = a;
+      b.onclick = function () { select(state.image, a); };
+      ab.appendChild(b);
+    });
+
+    render();
   }).catch(function () {
-    var s = document.getElementById('demo-stage');
+    var s = el('trydemo');
     if (s) s.style.display = 'none';
   });
 })();
@@ -419,6 +550,23 @@
       <div class="column is-full-width">
 
         <h2 class="title is-3 has-text-centered">Demonstrations</h2>
+
+        <div class="columns is-centered mb-2">
+          <div class="column is-7">
+            <video autoplay muted loop playsinline preload="metadata"
+                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
+              <source src="./static/videos/clips/demo_quad.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered is-size-7 mt-2">Synchronized external and on-robot views; the green tag is A4D's live affordance inference.</p>
+          </div>
+          <div class="column is-5">
+            <video autoplay muted loop playsinline preload="metadata"
+                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
+              <source src="./static/videos/clips/demo_arm_stack.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered is-size-7 mt-2">A second task &mdash; "stack the cube and orange on the book."</p>
+          </div>
+        </div>
 
         <div class="has-text-centered mb-6">
           <video controls muted playsinline preload="none"
