@@ -74,6 +74,46 @@
     .link-card .button.is-link:hover {
       background-color: #357ABD;
     }
+
+    /* ---- interactive demo ---- */
+    #trydemo .preset-group { margin-bottom: 0.75rem; }
+    #trydemo .preset-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.03em;
+      text-transform: uppercase; color: #7a7a7a; margin-bottom: 0.4rem;
+    }
+    #trydemo .chip {
+      display: inline-block; margin: 0 0.4rem 0.4rem 0; padding: 0.35rem 0.75rem;
+      border: 1px solid #d0d0d0; border-radius: 999px; background: #fff;
+      font-size: 0.9rem; cursor: pointer; transition: all 0.15s ease;
+    }
+    #trydemo .chip:hover { border-color: #4A90E2; color: #4A90E2; }
+    #trydemo .chip.active { background: #4A90E2; border-color: #4A90E2; color: #fff; }
+    #trydemo .stage {
+      display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+      background: #fff; border-radius: 14px; padding: 1.25rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    #trydemo .stage img {
+      width: 240px; height: 240px; object-fit: cover; border-radius: 10px; flex: 0 0 auto;
+    }
+    #trydemo .readout { flex: 1 1 300px; min-width: 260px; }
+    #trydemo .query { font-size: 1.05rem; color: #555; margin-bottom: 0.35rem; }
+    #trydemo .verdict { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.75rem; }
+    #trydemo .verdict .yes { color: #1a9850; }
+    #trydemo .verdict .no  { color: #b0413e; }
+    #trydemo .bar-row { margin-bottom: 0.55rem; }
+    #trydemo .bar-row .lab { font-size: 0.82rem; color: #666; margin-bottom: 0.15rem; }
+    #trydemo .bar { height: 12px; border-radius: 6px; background: #ececec; overflow: hidden; }
+    #trydemo .bar > span { display: block; height: 100%; border-radius: 6px; }
+    #trydemo .conf-hi > span { background: #1a9850; }
+    #trydemo .conf-lo > span { background: #e8a33d; }
+    #trydemo .axis .a { background: #4A90E2; }
+    #trydemo .axis .b { background: #d98b89; }
+    #trydemo .note {
+      margin-top: 0.75rem; font-size: 0.88rem; color: #666;
+      border-left: 3px solid #e8a33d; padding-left: 0.7rem;
+    }
+    #trydemo .note.ok { border-left-color: #1a9850; }
   </style>
 </head>
 
@@ -158,23 +198,22 @@
       
         </div>
       
-        <!-- Hero Video -->
-        <div style="margin-top: 2rem;">
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            controls
-            poster="./static/videos/A4D_Demo_poster.jpg"
-            style="
-              width: 100%;
-              max-width: 1100px;
-              border-radius: 12px;
-            ">
-            <source src="./static/videos/A4D_Demo_Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+        <!-- Hero clips -->
+        <div class="columns is-centered" style="margin-top: 2rem;">
+          <div class="column is-6">
+            <video autoplay muted loop playsinline preload="metadata"
+                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
+              <source src="./static/videos/clips/demo_arm.mp4" type="video/mp4">
+            </video>
+            <p class="is-size-7 has-text-centered mt-2">Tabletop manipulation</p>
+          </div>
+          <div class="column is-6">
+            <video autoplay muted loop playsinline preload="metadata"
+                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
+              <source src="./static/videos/clips/demo_spot.mp4" type="video/mp4">
+            </video>
+            <p class="is-size-7 has-text-centered mt-2">Legged navigation — the cart is inferred <em>movable</em> and cleared from the path</p>
+          </div>
         </div>
       
       </div>
@@ -209,6 +248,119 @@
     </div>
   </div>
 </section>
+
+<section class="section" id="trydemo">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3 has-text-centered">Try A4D</h2>
+        <p class="has-text-centered content mb-5">
+          Each query runs the fine-tuned model on a real image: it projects the image onto the
+          affordance axis and calibrates the projection into a confidence score. Pick an example.
+        </p>
+
+        <div class="preset-group">
+          <div class="preset-label">High confidence</div>
+          <div id="chips-confident"></div>
+        </div>
+        <div class="preset-group">
+          <div class="preset-label">Low confidence &mdash; A4D defers to a VLM</div>
+          <div id="chips-lowconf"></div>
+        </div>
+
+        <div class="stage" id="demo-stage">
+          <img id="demo-img" alt="">
+          <div class="readout">
+            <div class="query" id="demo-query"></div>
+            <div class="verdict" id="demo-verdict"></div>
+
+            <div class="bar-row">
+              <div class="lab">Calibrated confidence: <b id="demo-conf-val"></b></div>
+              <div class="bar" id="demo-conf-bar"><span></span></div>
+            </div>
+
+            <div class="bar-row axis">
+              <div class="lab">Similarity to <b id="demo-aff-name"></b></div>
+              <div class="bar"><span class="a" id="demo-sim-aff"></span></div>
+            </div>
+            <div class="bar-row axis">
+              <div class="lab">Similarity to <b id="demo-ant-name"></b></div>
+              <div class="bar"><span class="b" id="demo-sim-ant"></span></div>
+            </div>
+
+            <div class="note" id="demo-note"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var CONF_THRESHOLD = 0.7;
+  fetch('./static/demo/results.json').then(function (r) { return r.json(); }).then(function (data) {
+    var presets = data.presets;
+    var el = function (id) { return document.getElementById(id); };
+
+    function render(p) {
+      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.key === p.image + '|' + p.affordance);
+      });
+      el('demo-img').src = './static/demo/img/' + p.image;
+      el('demo-img').alt = p.object + ' — ' + p.affordance;
+      el('demo-query').textContent = 'Is this ' + p.object + ' “' + p.affordance + '”?';
+
+      var v = el('demo-verdict');
+      v.innerHTML = p.pred === 1
+        ? '<span class="yes">Yes</span>'
+        : '<span class="no">No</span>';
+
+      var pct = Math.round(p.conf * 100);
+      el('demo-conf-val').textContent = pct + '%';
+      var cb = el('demo-conf-bar');
+      cb.className = 'bar ' + (p.conf >= CONF_THRESHOLD ? 'conf-hi' : 'conf-lo');
+      cb.firstElementChild.style.width = pct + '%';
+
+      el('demo-aff-name').textContent = '“' + p.affordance + '”';
+      el('demo-ant-name').textContent = '“' + p.antonym + '”';
+      // similarities are ~0.18-0.26; rescale to a readable 0-100 band
+      var scale = function (s) { return Math.max(6, Math.min(100, (s - 0.16) / 0.11 * 100)); };
+      el('demo-sim-aff').style.width = scale(p.sim_aff) + '%';
+      el('demo-sim-ant').style.width = scale(p.sim_ant) + '%';
+
+      var note = el('demo-note');
+      if (p.conf >= CONF_THRESHOLD) {
+        note.className = 'note ok';
+        note.textContent = p.blurb + ' A4D is confident enough to act on this directly.';
+      } else {
+        note.className = 'note';
+        note.textContent = p.blurb + ' With confidence this low, A4D routes the call to a VLM rather than committing.';
+      }
+    }
+
+    function addChips(containerId, list) {
+      var c = document.getElementById(containerId);
+      list.forEach(function (p) {
+        var b = document.createElement('span');
+        b.className = 'chip';
+        b.dataset.key = p.image + '|' + p.affordance;
+        b.textContent = p.object + ' · ' + p.affordance;
+        b.onclick = function () { render(p); };
+        c.appendChild(b);
+      });
+    }
+    addChips('chips-confident', presets.confident);
+    addChips('chips-lowconf', presets.lowconf);
+    render(presets.confident[0]);
+  }).catch(function () {
+    var s = document.getElementById('demo-stage');
+    if (s) s.style.display = 'none';
+  });
+})();
+</script>
 
 <section class="section" id="framework">
   <div class="container is-max-desktop">
@@ -268,27 +420,15 @@
 
         <h2 class="title is-3 has-text-centered">Demonstrations</h2>
 
-        <div class="columns is-centered mb-2">
-          <div class="column is-6">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_arm.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered is-size-7 mt-2">Tabletop manipulation — "place the strawberry in the can"</p>
-          </div>
-          <div class="column is-6">
-            <video autoplay muted loop playsinline preload="metadata"
-                   style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px;">
-              <source src="./static/videos/clips/demo_spot.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered is-size-7 mt-2">Legged navigation — the cart is inferred <em>movable</em> and cleared from the path</p>
-          </div>
+        <div class="has-text-centered mb-6">
+          <video controls muted playsinline preload="none"
+                 poster="./static/videos/A4D_Demo_poster.jpg"
+                 style="width:100%; max-width:1000px; border-radius:12px;">
+            <source src="./static/videos/A4D_Demo_Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="is-size-7 mt-2">Full demo video — method overview and real-robot deployment on manipulation and navigation tasks.</p>
         </div>
-
-        <p class="content has-text-centered mb-5">
-          A4D drives affordance-based decisions on real robots across manipulation and navigation.
-          <a href="./static/videos/A4D_Demo_Video.mp4" target="_blank" rel="noopener noreferrer">Full demo video →</a>
-        </p>
 
         <figure class="image">
           <img src="./static/images/qualitative_demos.png"

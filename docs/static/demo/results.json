@@ -1,0 +1,690 @@
+{
+ "base": [
+  "graspable",
+  "liftable",
+  "movable",
+  "supportable",
+  "containable",
+  "stackable",
+  "rollable",
+  "openable"
+ ],
+ "discovered": [
+  "traversable"
+ ],
+ "antonyms": {
+  "graspable": "slippery",
+  "movable": "anchored",
+  "stackable": "wobbly",
+  "supportable": "fragile",
+  "liftable": "heavy",
+  "rollable": "fixed",
+  "openable": "sealed",
+  "containable": "solid",
+  "traversable": "blocked"
+ },
+ "items": [
+  {
+   "image": "cart.png",
+   "object": "cart",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.214,
+     "sim_ant": 0.23,
+     "margin": -0.016,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.208,
+     "sim_ant": 0.234,
+     "margin": -0.026,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.226,
+     "sim_ant": 0.233,
+     "margin": -0.007,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.836,
+     "sim_aff": 0.231,
+     "sim_ant": 0.215,
+     "margin": 0.017,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.211,
+     "sim_ant": 0.227,
+     "margin": -0.016,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.199,
+     "sim_ant": 0.233,
+     "margin": -0.033,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.191,
+     "sim_ant": 0.233,
+     "margin": -0.042,
+     "gt": 1
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.143,
+     "sim_aff": 0.214,
+     "sim_ant": 0.225,
+     "margin": -0.01,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "door_013.jpg",
+   "object": "door",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.236,
+     "sim_ant": 0.211,
+     "margin": 0.024,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.206,
+     "sim_ant": 0.238,
+     "margin": -0.032,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.973,
+     "sim_aff": 0.201,
+     "sim_ant": 0.244,
+     "margin": -0.042,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.194,
+     "sim_ant": 0.236,
+     "margin": -0.041,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.21,
+     "sim_ant": 0.234,
+     "margin": -0.024,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.19,
+     "sim_ant": 0.235,
+     "margin": -0.045,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.193,
+     "sim_ant": 0.233,
+     "margin": -0.04,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.241,
+     "sim_ant": 0.209,
+     "margin": 0.031,
+     "gt": 1
+    }
+   }
+  },
+  {
+   "image": "cup_000.jpg",
+   "object": "cup",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.234,
+     "sim_ant": 0.201,
+     "margin": 0.033,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.237,
+     "sim_ant": 0.19,
+     "margin": 0.046,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.237,
+     "sim_ant": 0.18,
+     "margin": 0.057,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.193,
+     "sim_ant": 0.235,
+     "margin": -0.042,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.24,
+     "sim_ant": 0.209,
+     "margin": 0.031,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.239,
+     "sim_ant": 0.198,
+     "margin": 0.042,
+     "gt": 1
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.207,
+     "sim_ant": 0.231,
+     "margin": -0.023,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.696,
+     "sim_aff": 0.211,
+     "sim_ant": 0.231,
+     "margin": -0.02,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "orange_000.jpg",
+   "object": "orange",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.191,
+     "margin": 0.045,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.185,
+     "margin": 0.051,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.236,
+     "sim_ant": 0.173,
+     "margin": 0.063,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.178,
+     "sim_ant": 0.235,
+     "margin": -0.057,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.197,
+     "sim_ant": 0.235,
+     "margin": -0.038,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.206,
+     "sim_ant": 0.227,
+     "margin": -0.021,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 1,
+     "conf": 1.0,
+     "sim_aff": 0.246,
+     "sim_ant": 0.22,
+     "margin": 0.026,
+     "gt": 1
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.193,
+     "sim_ant": 0.233,
+     "margin": -0.041,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "box_000.jpg",
+   "object": "box",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.193,
+     "margin": 0.042,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.236,
+     "sim_ant": 0.194,
+     "margin": 0.042,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.182,
+     "margin": 0.053,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.234,
+     "sim_ant": 0.217,
+     "margin": 0.017,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.24,
+     "sim_ant": 0.194,
+     "margin": 0.046,
+     "gt": 1
+    },
+    "stackable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.242,
+     "sim_ant": 0.194,
+     "margin": 0.047,
+     "gt": 1
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.217,
+     "sim_ant": 0.227,
+     "margin": -0.011,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.239,
+     "sim_ant": 0.201,
+     "margin": 0.038,
+     "gt": 1
+    }
+   }
+  },
+  {
+   "image": "stairs_004.jpg",
+   "object": "stairs",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.226,
+     "sim_ant": 0.228,
+     "margin": -0.002,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.219,
+     "sim_ant": 0.23,
+     "margin": -0.011,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.226,
+     "sim_ant": 0.226,
+     "margin": 0.0,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.226,
+     "sim_ant": 0.227,
+     "margin": -0.001,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.22,
+     "sim_ant": 0.227,
+     "margin": -0.007,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.215,
+     "sim_ant": 0.23,
+     "margin": -0.014,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.197,
+     "sim_ant": 0.235,
+     "margin": -0.038,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 1,
+     "conf": 0.778,
+     "sim_aff": 0.225,
+     "sim_ant": 0.223,
+     "margin": 0.002,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "bed_000.jpg",
+   "object": "bed",
+   "results": {
+    "graspable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.19,
+     "sim_ant": 0.237,
+     "margin": -0.047,
+     "gt": 0
+    },
+    "liftable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.189,
+     "sim_ant": 0.239,
+     "margin": -0.05,
+     "gt": 0
+    },
+    "movable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.21,
+     "sim_ant": 0.241,
+     "margin": -0.031,
+     "gt": 0
+    },
+    "supportable": {
+     "pred": 1,
+     "conf": 0.961,
+     "sim_aff": 0.238,
+     "sim_ant": 0.194,
+     "margin": 0.044,
+     "gt": 1
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.179,
+     "sim_ant": 0.234,
+     "margin": -0.056,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.179,
+     "sim_ant": 0.236,
+     "margin": -0.058,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.333,
+     "sim_aff": 0.168,
+     "sim_ant": 0.23,
+     "margin": -0.063,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.184,
+     "sim_ant": 0.233,
+     "margin": -0.049,
+     "gt": 0
+    }
+   }
+  },
+  {
+   "image": "knife_000.jpg",
+   "object": "knife",
+   "results": {
+    "graspable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.2,
+     "margin": 0.034,
+     "gt": 1
+    },
+    "liftable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.235,
+     "sim_ant": 0.202,
+     "margin": 0.033,
+     "gt": 1
+    },
+    "movable": {
+     "pred": 1,
+     "conf": 0.929,
+     "sim_aff": 0.232,
+     "sim_ant": 0.188,
+     "margin": 0.043,
+     "gt": 1
+    },
+    "supportable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.191,
+     "sim_ant": 0.234,
+     "margin": -0.043,
+     "gt": 0
+    },
+    "containable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.199,
+     "sim_ant": 0.237,
+     "margin": -0.038,
+     "gt": 0
+    },
+    "stackable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.207,
+     "sim_ant": 0.233,
+     "margin": -0.026,
+     "gt": 0
+    },
+    "rollable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.206,
+     "sim_ant": 0.232,
+     "margin": -0.026,
+     "gt": 0
+    },
+    "openable": {
+     "pred": 0,
+     "conf": 0.9,
+     "sim_aff": 0.198,
+     "sim_ant": 0.235,
+     "margin": -0.038,
+     "gt": 0
+    }
+   }
+  }
+ ],
+ "presets": {
+  "confident": [
+   {
+    "image": "cup_000.jpg",
+    "object": "cup",
+    "affordance": "containable",
+    "antonym": "solid",
+    "pred": 1,
+    "conf": 0.961,
+    "sim_aff": 0.24,
+    "sim_ant": 0.209,
+    "margin": 0.031,
+    "blurb": "A cup is built to hold things."
+   },
+   {
+    "image": "orange_000.jpg",
+    "object": "orange",
+    "affordance": "rollable",
+    "antonym": "fixed",
+    "pred": 1,
+    "conf": 1.0,
+    "sim_aff": 0.246,
+    "sim_ant": 0.22,
+    "margin": 0.026,
+    "blurb": "A round fruit rolls freely."
+   },
+   {
+    "image": "bed_000.jpg",
+    "object": "bed",
+    "affordance": "supportable",
+    "antonym": "fragile",
+    "pred": 1,
+    "conf": 0.961,
+    "sim_aff": 0.238,
+    "sim_ant": 0.194,
+    "margin": 0.044,
+    "blurb": "A bed is made to rest on."
+   },
+   {
+    "image": "door_013.jpg",
+    "object": "door",
+    "affordance": "movable",
+    "antonym": "anchored",
+    "pred": 0,
+    "conf": 0.973,
+    "sim_aff": 0.201,
+    "sim_ant": 0.244,
+    "margin": -0.042,
+    "blurb": "A door is hinged in place \u2014 you can't just carry it off."
+   },
+   {
+    "image": "box_000.jpg",
+    "object": "box",
+    "affordance": "stackable",
+    "antonym": "wobbly",
+    "pred": 1,
+    "conf": 0.961,
+    "sim_aff": 0.242,
+    "sim_ant": 0.194,
+    "margin": 0.047,
+    "blurb": "Flat, rigid sides make it easy to stack."
+   },
+   {
+    "image": "knife_000.jpg",
+    "object": "knife",
+    "affordance": "graspable",
+    "antonym": "slippery",
+    "pred": 1,
+    "conf": 0.929,
+    "sim_aff": 0.235,
+    "sim_ant": 0.2,
+    "margin": 0.034,
+    "blurb": "A handle sized for the hand."
+   }
+  ],
+  "lowconf": [
+   {
+    "image": "stairs_004.jpg",
+    "object": "stairs",
+    "affordance": "supportable",
+    "antonym": "fragile",
+    "pred": 0,
+    "conf": 0.333,
+    "sim_aff": 0.226,
+    "sim_ant": 0.227,
+    "margin": -0.001,
+    "blurb": "Can you rest on a staircase? The projection lands right on the boundary between \u201csupportable\u201d and \u201cfragile.\u201d"
+   },
+   {
+    "image": "cart.png",
+    "object": "cart",
+    "affordance": "containable",
+    "antonym": "solid",
+    "pred": 0,
+    "conf": 0.333,
+    "sim_aff": 0.211,
+    "sim_ant": 0.227,
+    "margin": -0.016,
+    "blurb": "Is a flat platform cart a container? Even people disagree \u2014 and the model's projection reflects that."
+   }
+  ]
+ }
+}
