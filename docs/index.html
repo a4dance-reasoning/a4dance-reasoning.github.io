@@ -38,6 +38,42 @@
       border-radius: 12px;
       width: 100%;
     }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .link-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .link-card .icon {
+      color: #4A90E2;
+      margin-bottom: 10px;
+    }
+
+    .link-card .card-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .link-card .button.is-link {
+      background-color: #4A90E2;
+      border: none;
+    }
+
+    .link-card .button.is-link:hover {
+      background-color: #357ABD;
+    }
   </style>
 </head>
 
@@ -266,6 +302,83 @@
           </p>
         </div>
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Related Links</h2>
+
+        <div class="columns is-multiline is-centered">
+
+          <div class="column is-6">
+            <div class="card link-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-lightbulb fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Affordance Generation</h3>
+                <p class="mb-4">Open-vocabulary affordance discovery with a VLM.</p>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/a4dance-reasoning/a4dance-reasoning.github.io/blob/main/affordance_generation.ipynb"
+                  class="button is-link is-rounded">View Notebook</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card link-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-gauge-high fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Classification &amp; Uncertainty</h3>
+                <p class="mb-4">CLIP-based affordance classification with calibrated uncertainty.</p>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/a4dance-reasoning/a4dance-reasoning.github.io/blob/main/classification_uncertainty.ipynb"
+                  class="button is-link is-rounded">View Notebook</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card link-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-image fa-2x"></i>
+                </span>
+                <h3 class="title is-5">OpenCLIP</h3>
+                <p class="mb-4">The vision-language backbone fine-tuned for affordance inference.</p>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/mlfoundations/open_clip"
+                  class="button is-link is-rounded">Explore Repository</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="card link-card">
+              <div class="card-content has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-compass fa-2x"></i>
+                </span>
+                <h3 class="title is-5">Uncertainty in Planning</h3>
+                <p class="mb-4">Prior work on calibrated uncertainty for planning with foundation models.</p>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://uncertainty-in-planning.github.io/"
+                  class="button is-link is-rounded">View Project</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        </div>
       </div>
     </div>
   </div>
