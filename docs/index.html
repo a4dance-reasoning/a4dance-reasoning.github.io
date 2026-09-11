@@ -376,33 +376,50 @@
             <source src="./static/videos/clips/task_arm_left.mp4" type="video/mp4">
           </video>
           <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Manipulation — <em>“place the strawberry in the can.”</em> External view (left) and on-robot view (right).
+            Manipulation: <em>“place the strawberry in the can.”</em> External view (left) and on-robot view (right).
           </p>
           <video autoplay muted loop playsinline preload="metadata"
                  style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
             <source src="./static/videos/clips/task_dog_left.mp4" type="video/mp4">
           </video>
           <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Navigation — <em>“go to the far end of the hallway.”</em> External view (left) and on-robot view (right). A4D infers the blocking cart is <em>movable</em> and clears the path.
+            Navigation: <em>“go to the far end of the hallway.”</em> External view (left) and on-robot view (right). A4D infers the blocking cart is <em>movable</em> and clears the path.
           </p>
           <video autoplay muted loop playsinline preload="metadata"
                  style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
             <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
           </video>
           <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Manipulation — <em>“stack the cube and orange on the book.”</em> External view (left) and on-robot view (right); the green tag is A4D's live affordance inference.
+            Manipulation: <em>“stack the cube and orange on the book.”</em> External view (left) and on-robot view (right); the green tag is A4D's live affordance inference.
           </p>
           <video autoplay muted loop playsinline preload="metadata"
                  style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
             <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
           </video>
           <p class="is-size-7 has-text-centered mt-2">
-            Navigation — a second hallway run. External view (left) and on-robot view (right).
+            Navigation: a second hallway run. External view (left) and on-robot view (right).
           </p>
         </div>
-      
+
       </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body" style="padding-top: 1.25rem; padding-bottom: 1.25rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <p class="is-size-5">
+            <b>A4D reasons about what objects <em>enable</em>, not what they <em>are</em></b>,
+            mapping visual observations into a functional latent space built from affordance axes
+            like <em>movable</em> &harr; <em>fixed</em>, and discovering new affordances on the fly
+            when the existing ones fall short.
+          </p>
         </div>
       </div>
     </div>
@@ -421,11 +438,11 @@
             </p>
 
             <p>
-              We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce A4D, which maps visual observations into a shared latent space structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4D <em>infers</em> functionalities relevant to the observed object.
+              We address this limited generalizability through affordance reasoning, enabling planning based on task-relevant object functionalities instead of appearance alone. We introduce <b>A4D</b>, which maps visual observations into a shared <b>functional latent space</b> structured around affordances (e.g., "movable"). By projecting visual observations into this functional latent space and measuring their proximity to affordances, A4D <em>infers</em> functionalities relevant to the observed object.
             </p>
 
             <p>
-              Furthermore, we introduce an affordance <em>discovery</em> mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4D uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4D across several planning tasks involving diverse and unseen affordances. A4D achieves 94% inference accuracy on existing affordances outperforming state-of-the-art approaches by over 15% points, improves new-affordance inference accuracy from 70% to over 90% with fewer than 10% of the original training data, and enables 100x faster inference.
+              Furthermore, we introduce an affordance <b>discovery</b> mechanism that expands the latent space to handle unseen scenarios where existing affordances are insufficient. A4D uses proximity in the functional latent space to quantify uncertainty in affordance inference and selectively triggers affordance discovery. We evaluate A4D across several planning tasks involving diverse and unseen affordances. A4D achieves <b>94% inference accuracy</b> on existing affordances outperforming state-of-the-art approaches by over 15% points, improves new-affordance inference accuracy from <b>70% to over 90%</b> with fewer than 10% of the original training data, and enables <b>100x faster</b> inference.
             </p>
           </div>
         </div>
@@ -441,17 +458,17 @@
 
         <h2 class="title is-3 has-text-centered">Try A4D</h2>
         <p class="has-text-centered content mb-5">
-          Every result below is the fine-tuned model run on a real image &mdash; it projects the image
-          onto each affordance axis and calibrates the projection into a confidence score. Start from a
-          highlight, or pick any object and affordance yourself.
+          Every result below is the fine-tuned model run on a real image: it projects the image
+          onto each <b>affordance axis</b> and calibrates the projection into a <b>confidence score</b>.
+          Start from a highlight, or pick any object and affordance yourself.
         </p>
 
         <div class="preset-group">
-          <div class="preset-label">Highlights &mdash; confident &amp; decisive</div>
+          <div class="preset-label">Highlights: confident &amp; decisive</div>
           <div id="chips-confident" class="preset-grid"></div>
         </div>
         <div class="preset-group lowconf">
-          <div class="preset-label">Highlights &mdash; low confidence, A4D defers to a VLM</div>
+          <div class="preset-label">Highlights: low confidence, A4D defers to a VLM</div>
           <div id="chips-lowconf" class="preset-grid"></div>
         </div>
 
@@ -504,7 +521,7 @@
         </div>
 
         <div class="profile" id="demo-profile" hidden>
-          <div class="profile-title">What this <span id="prof-obj"></span> enables &mdash; all eight affordances</div>
+          <div class="profile-title">What this <span id="prof-obj"></span> enables: all eight affordances</div>
           <div id="prof-rows"></div>
         </div>
 
@@ -637,7 +654,7 @@
       var note = el('demo-note');
       if (r.conf >= CONF_THRESHOLD) {
         note.className = 'note ok';
-        note.textContent = (preset ? preset.blurb + ' ' : '') + 'Confidence is high — A4D acts on this directly.';
+        note.textContent = (preset ? preset.blurb + ' ' : '') + 'Confidence is high, so A4D acts on this directly.';
       } else {
         note.className = 'note';
         note.textContent = (preset ? preset.blurb + ' ' : '') +
@@ -737,6 +754,40 @@
       <div class="column is-full-width">
 
         <h2 class="title is-3 has-text-centered">Framework Overview</h2>
+        <p class="has-text-centered content mb-5">
+          A4D maps observations into a latent space built around what objects <em>enable</em>,
+          rather than how they look, and expands that space on its own when it runs into
+          something new.
+        </p>
+
+        <div class="content">
+          <ul>
+            <li>
+              Appearance-based latent spaces capture how an object <em>looks</em>, not what it
+              <b>enables</b>, and whether something is "movable" has little to do with its shape or color.
+            </li>
+            <li>
+              We introduce <b>A4D</b>: visual observations and affordance descriptions are mapped
+              into a shared <b>functional latent space</b>, built from affordance axes like
+              <em>movable</em> &harr; <em>fixed</em>.
+            </li>
+            <li>
+              Projection proximity onto each axis is calibrated into an <b>uncertainty estimate</b>,
+              so A4D knows when it doesn't know.
+            </li>
+            <li>
+              When uncertainty is high or existing affordances fall short, A4D triggers
+              <b>affordance discovery</b>: a VLM proposes and labels new affordances
+              (e.g., <em>"traversable"</em>), which fold back into the latent space through
+              offline learning.
+            </li>
+          </ul>
+        </div>
+
+        <h3 class="title is-4 has-text-centered mt-6">Functional Latent Space</h3>
+        <p class="has-text-centered content mb-4">
+          <em>Projecting what an object looks like onto what it can do.</em>
+        </p>
 
         <figure class="image">
           <img src="./static/images/framework1.png"
@@ -756,7 +807,10 @@
           </p>
         </div>
 
-        <br><br>
+        <h3 class="title is-4 has-text-centered mt-6">Affordance Discovery</h3>
+        <p class="has-text-centered content mb-4">
+          <em>Generating a new affordance when none of the existing ones fit.</em>
+        </p>
 
         <figure class="image">
           <img src="./static/images/framework2.png"
@@ -800,8 +854,13 @@
             <source src="./static/videos/A4D_Demo_Video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <p class="is-size-7 mt-2">Full demo video — method overview and real-robot deployment on manipulation and navigation tasks.</p>
+          <p class="is-size-7 mt-2">Full demo video: method overview and real-robot deployment on manipulation and navigation tasks.</p>
         </div>
+
+        <h3 class="title is-4 has-text-centered mt-6">Cross-Scenario Decision Making</h3>
+        <p class="has-text-centered content mb-4">
+          <em>The same framework picks the right object, or the right new affordance, whatever the scenario calls for.</em>
+        </p>
 
         <figure class="image">
           <img src="./static/images/qualitative_demos.png"
@@ -811,6 +870,7 @@
 
         <div class="content has-text-justified mt-4">
           <p>
+            <b>Cross-Scenario Decision Making.</b>
             A4D performs affordance-based decision making across diverse scenarios.
             In the first example, the planner selects the cart as the most movable object
             for the task. In the second example, existing affordances are insufficient,
@@ -819,7 +879,10 @@
           </p>
         </div>
 
-        <br><br>
+        <h3 class="title is-4 has-text-centered mt-6">Cross-Platform Transfer</h3>
+        <p class="has-text-centered content mb-4">
+          <em>The same affordance pipeline, unmodified, running on a different robot entirely.</em>
+        </p>
 
         <figure class="image">
           <img src="./static/images/tabletop_demo.png"
@@ -829,6 +892,7 @@
 
         <div class="content has-text-justified mt-4">
           <p>
+            <b>Cross-Platform Transfer.</b>
             A4D transfers across robot platforms and domains. The same affordance
             generation, inference, and discovery framework is deployed on a tabletop robot
             arm, demonstrating that affordance reasoning is not tied to a specific robot
@@ -850,8 +914,8 @@
 
         <h2 class="title is-3 has-text-centered">Browse the Dataset</h2>
         <p class="has-text-centered content mb-5 dv-intro">
-          A look at the raw, human-verified affordance labels A4D trains and calibrates on
-          &mdash; ground truth, not model predictions. These objects are separate from the ones
+          A look at the raw, human-verified affordance labels A4D trains and calibrates on:
+          <b>ground truth, not model predictions</b>. These objects are separate from the ones
           in <a href="#trydemo">Try A4D</a> above. Each image carries all ten affordances;
           <em>pushable</em> and <em>traversable</em> were added later through affordance
           discovery, so a handful of labels here fill in our best judgment where the discovery
