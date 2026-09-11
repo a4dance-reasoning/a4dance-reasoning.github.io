@@ -218,35 +218,51 @@
 
     /* ---- dataset viewer ---- */
     #datasetviewer .dv-intro a { color: #4A90E2; }
-    #datasetviewer .dv-filmstrip {
-      display: flex; gap: 0.6rem; overflow-x: auto; padding: 0.25rem 0.25rem 0.9rem;
-      margin-bottom: 1rem;
-    }
-    #datasetviewer .dv-thumb {
-      flex: 0 0 auto; width: 76px; cursor: pointer; text-align: center;
-      border: none; background: none; padding: 0; font: inherit;
-    }
-    #datasetviewer .dv-thumb img {
-      width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: #f4f4f4;
-      border: 3px solid transparent; transition: border-color 0.15s ease;
-    }
-    #datasetviewer .dv-thumb:hover img { border-color: #b9d4f2; }
-    #datasetviewer .dv-thumb.active img { border-color: #4A90E2; }
-    #datasetviewer .dv-thumb-lab {
-      display: block; font-size: 0.72rem; color: #777; margin-top: 0.3rem;
-      text-transform: capitalize; white-space: nowrap;
-    }
-    #datasetviewer .dv-thumb.active .dv-thumb-lab { color: #357ABD; font-weight: 600; }
 
     #datasetviewer .dv-stage {
       display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;
       background: #fff; border-radius: 14px; padding: 1.25rem;
       box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     }
-    #datasetviewer .dv-stage img {
-      width: 240px; height: 240px; object-fit: contain; background: #f4f4f4;
-      border-radius: 10px; flex: 0 0 auto;
+    #datasetviewer .dv-slide {
+      position: relative; flex: 0 0 auto; width: 240px; height: 240px;
+      border-radius: 10px; overflow: hidden; background: #f4f4f4; outline: none;
     }
+    #datasetviewer .dv-slide img {
+      width: 100%; height: 100%; object-fit: contain; background: #f4f4f4; display: block;
+    }
+    #datasetviewer .dv-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 32px; height: 32px; border-radius: 50%; border: none;
+      background: rgba(0,0,0,0.45); color: #fff; font-size: 1rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s ease;
+    }
+    #datasetviewer .dv-nav:hover { background: rgba(0,0,0,0.7); }
+    #datasetviewer .dv-nav.dv-prev { left: 7px; }
+    #datasetviewer .dv-nav.dv-next { right: 7px; }
+
+    #datasetviewer .dv-scrub {
+      display: flex; align-items: center; gap: 0.9rem; margin-top: 1rem;
+    }
+    #datasetviewer .dv-count {
+      flex: 0 0 auto; font-size: 0.82rem; color: #888; white-space: nowrap; min-width: 84px;
+    }
+    #datasetviewer .dv-hint {
+      flex: 0 0 auto; font-size: 0.75rem; color: #bbb;
+    }
+    #datasetviewer input[type="range"] {
+      flex: 1 1 auto; -webkit-appearance: none; appearance: none;
+      height: 5px; border-radius: 3px; background: #ececec; outline: none; cursor: pointer;
+    }
+    #datasetviewer input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+      background: #4A90E2; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 0 1px #4A90E2;
+    }
+    #datasetviewer input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px; border-radius: 50%; background: #4A90E2;
+      cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 0 1px #4A90E2;
+    }
+
     #datasetviewer .dv-readout { flex: 1 1 300px; min-width: 260px; animation: trydemo-fade 0.3s ease; }
     #datasetviewer .dv-obj-name { font-size: 1.4rem; font-weight: 700; text-transform: capitalize; margin-bottom: 0.1rem; }
     #datasetviewer .dv-sub {
@@ -841,15 +857,23 @@
           discovery and are only annotated for a subset of the dataset.
         </p>
 
-        <div class="dv-filmstrip" id="dv-filmstrip"></div>
-
-        <div class="dv-stage" id="dv-stage">
-          <img id="dv-img" alt="">
+        <div class="dv-stage">
+          <div class="dv-slide" id="dv-slide" tabindex="0">
+            <button class="dv-nav dv-prev" id="dv-prev" aria-label="Previous object">&#10094;</button>
+            <img id="dv-img" alt="">
+            <button class="dv-nav dv-next" id="dv-next" aria-label="Next object">&#10095;</button>
+          </div>
           <div class="dv-readout">
             <div class="dv-obj-name" id="dv-obj-name"></div>
             <div class="dv-sub">Ground-truth affordance labels</div>
             <div id="dv-rows"></div>
           </div>
+        </div>
+
+        <div class="dv-scrub">
+          <span class="dv-count" id="dv-count"></span>
+          <input type="range" id="dv-slider" min="0" max="0" value="0" step="1" aria-label="Browse objects">
+          <span class="dv-hint">&larr; &rarr; keys</span>
         </div>
 
         <p class="has-text-centered mt-5">
@@ -871,16 +895,20 @@
 
   fetch('./static/dataset/preview.json').then(function (r) { return r.json(); }).then(function (data) {
     var AFFS = data.affordances;
-    var strip = el('dv-filmstrip');
+    var items = data.items;
+    var n = items.length;
+    var slider = el('dv-slider');
+    slider.max = n - 1;
+    var idx = 0;
 
     function show(i) {
-      var it = data.items[i];
+      idx = ((i % n) + n) % n;
+      var it = items[idx];
       el('dv-img').src = './static/dataset/img/' + it.image;
       el('dv-img').alt = it.object;
       el('dv-obj-name').textContent = it.object;
-      Array.prototype.forEach.call(strip.children, function (t, j) {
-        t.classList.toggle('active', j === i);
-      });
+      el('dv-count').textContent = 'Object ' + (idx + 1) + ' / ' + n;
+      slider.value = idx;
       el('dv-rows').innerHTML = AFFS.map(function (a) {
         var v = it.labels[a];
         var cls = v === null ? 'na' : (v === 1 ? 'yes' : 'no');
@@ -891,14 +919,16 @@
       }).join('');
     }
 
-    data.items.forEach(function (it, i) {
-      var b = document.createElement('button');
-      b.className = 'dv-thumb';
-      b.innerHTML = '<img src="./static/dataset/img/' + it.image + '" alt="' + it.object + '" loading="lazy">' +
-        '<span class="dv-thumb-lab">' + it.object + '</span>';
-      b.onclick = function () { show(i); };
-      strip.appendChild(b);
+    el('dv-prev').onclick = function () { show(idx - 1); };
+    el('dv-next').onclick = function () { show(idx + 1); };
+    slider.addEventListener('input', function () { show(+slider.value); });
+    el('dv-slide').addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(idx - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { show(idx + 1); e.preventDefault(); }
     });
+
+    // preload the rest so prev/next feels instant
+    items.forEach(function (it) { new Image().src = './static/dataset/img/' + it.image; });
 
     show(0);
   }).catch(function () {
