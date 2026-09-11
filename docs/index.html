@@ -81,13 +81,28 @@
       font-size: 0.8rem; font-weight: 600; letter-spacing: 0.03em;
       text-transform: uppercase; color: #7a7a7a; margin-bottom: 0.4rem;
     }
-    #trydemo .chip {
-      display: inline-block; margin: 0 0.4rem 0.4rem 0; padding: 0.35rem 0.75rem;
-      border: 1px solid #d0d0d0; border-radius: 999px; background: #fff;
-      font-size: 0.9rem; cursor: pointer; transition: all 0.15s ease;
+    #trydemo .preset-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    #trydemo .preset-card {
+      display: flex; align-items: center; gap: 0.65rem; font: inherit; text-align: left;
+      padding: 0.4rem 0.85rem 0.4rem 0.4rem;
+      border: 1px solid #dcdcdc; border-radius: 12px; background: #fff;
+      cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
-    #trydemo .chip:hover { border-color: #4A90E2; color: #4A90E2; }
-    #trydemo .chip.active { background: #4A90E2; border-color: #4A90E2; color: #fff; }
+    #trydemo .preset-card:hover {
+      border-color: #4A90E2; transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(74,144,226,0.18);
+    }
+    #trydemo .preset-card.active {
+      border-color: #4A90E2; box-shadow: 0 0 0 2px rgba(74,144,226,0.35);
+    }
+    #trydemo .preset-card img {
+      width: 42px; height: 42px; object-fit: cover; border-radius: 8px; flex: 0 0 auto;
+    }
+    #trydemo .pc-txt { display: flex; flex-direction: column; line-height: 1.25; }
+    #trydemo .pc-obj { font-size: 0.92rem; font-weight: 600; color: #333; text-transform: capitalize; }
+    #trydemo .pc-aff { font-size: 0.8rem; color: #888; }
+    #trydemo .preset-group.lowconf .preset-card { border-left: 3px solid #e8a33d; }
+    #trydemo .preset-group.lowconf .pc-aff { color: #c07d1e; }
     #trydemo .stage {
       display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
       background: #fff; border-radius: 14px; padding: 1.25rem;
@@ -349,11 +364,11 @@
 
         <div class="preset-group">
           <div class="preset-label">Highlights &mdash; confident &amp; decisive</div>
-          <div id="chips-confident"></div>
+          <div id="chips-confident" class="preset-grid"></div>
         </div>
-        <div class="preset-group">
+        <div class="preset-group lowconf">
           <div class="preset-label">Highlights &mdash; low confidence, A4D defers to a VLM</div>
-          <div id="chips-lowconf"></div>
+          <div id="chips-lowconf" class="preset-grid"></div>
         </div>
 
         <div class="explore-head">Run it yourself</div>
@@ -557,7 +572,7 @@
       renderProfile(item);
       el('demo-profile').hidden = false;
 
-      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+      document.querySelectorAll('#trydemo .preset-card').forEach(function (c) {
         c.classList.toggle('active', c.dataset.key === image + '|' + aff);
       });
     }
@@ -572,7 +587,7 @@
       syncImage();
       stage.dataset.mode = 'ready';
       el('demo-profile').hidden = true;
-      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+      document.querySelectorAll('#trydemo .preset-card').forEach(function (c) {
         c.classList.toggle('active', c.dataset.key === objSel.value + '|' + affSel.value);
       });
     }
@@ -599,14 +614,19 @@
     affSel.addEventListener('change', setReady);
     runBtn.addEventListener('click', run);
 
-    // ---- highlight chips ----
+    // ---- highlight cards ----
     function addChips(containerId, list) {
       var c = el(containerId);
       list.forEach(function (p) {
-        var b = document.createElement('span');
-        b.className = 'chip';
+        var b = document.createElement('button');
+        b.className = 'preset-card';
         b.dataset.key = p.image + '|' + p.affordance;
-        b.textContent = p.object + ' · ' + p.affordance;
+        b.innerHTML =
+          '<img src="./static/demo/img/' + p.image + '" alt="" loading="lazy">' +
+          '<span class="pc-txt">' +
+            '<span class="pc-obj">' + p.object + '</span>' +
+            '<span class="pc-aff">' + p.affordance + '?</span>' +
+          '</span>';
         b.onclick = function () {
           if (running) return;
           objSel.value = p.image;
