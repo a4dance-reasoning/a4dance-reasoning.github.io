@@ -299,7 +299,7 @@
       
         </div>
       
-        <!-- Hero clips: external + first-person, side by side -->
+        <!-- Hero clips: external + first-person, side by side. Alternating arm / dog. -->
         <div style="margin-top: 2rem;">
           <video autoplay muted loop playsinline preload="metadata"
                  style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
@@ -312,8 +312,22 @@
                  style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
             <source src="./static/videos/clips/task_dog_left.mp4" type="video/mp4">
           </video>
-          <p class="is-size-7 has-text-centered mt-2">
+          <p class="is-size-7 has-text-centered mt-2 mb-4">
             Navigation — <em>“go to the far end of the hallway.”</em> External view (left) and on-robot view (right). A4D infers the blocking cart is <em>movable</em> and clears the path.
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered mt-2 mb-4">
+            Manipulation — <em>“stack the cube and orange on the book.”</em> External view (left) and on-robot view (right); the green tag is A4D's live affordance inference.
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered mt-2">
+            Navigation — a second hallway run. External view (left) and on-robot view (right).
           </p>
         </div>
       
@@ -704,24 +718,10 @@
       <div class="column is-full-width">
 
         <h2 class="title is-3 has-text-centered">Demonstrations</h2>
-
-        <div class="mb-2">
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered is-size-7 mt-2 mb-4">
-            Manipulation — <em>“stack the cube and orange on the book.”</em> External (left) and on-robot (right) views;
-            the green tag is A4D's live affordance inference.
-          </p>
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered is-size-7 mt-2">
-            Navigation — a second hallway run. External (left) and on-robot (right) views.
-          </p>
-        </div>
+        <p class="has-text-centered content mb-5">
+          The full demo video walks through the method and the real-robot deployments on the
+          manipulation and navigation tasks shown at the top of the page.
+        </p>
 
         <div class="has-text-centered mb-6">
           <video controls muted playsinline preload="none"
