@@ -120,23 +120,68 @@
       text-transform: uppercase; color: #9a9a9a; margin: 1.75rem 0 1rem;
       border-top: 1px solid #e5e5e5; padding-top: 1.25rem;
     }
-    #trydemo .gallery {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-      gap: 8px; margin-bottom: 0.5rem;
+    #trydemo .controls {
+      display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: flex-end;
+      margin-bottom: 1.25rem;
     }
-    #trydemo .gallery img {
-      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px;
-      cursor: pointer; border: 3px solid transparent; transition: border-color 0.15s ease;
+    #trydemo .field-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
+    #trydemo .field-wrap label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; color: #7a7a7a;
     }
-    #trydemo .gallery img:hover { border-color: #b9d4f2; }
-    #trydemo .gallery img.sel { border-color: #4A90E2; }
-    #trydemo .aff-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-    #trydemo .aff-btn {
-      padding: 0.35rem 0.8rem; border: 1px solid #d0d0d0; border-radius: 8px;
-      background: #fff; font-size: 0.9rem; cursor: pointer; transition: all 0.15s ease;
+    #trydemo select {
+      appearance: none; -webkit-appearance: none; -moz-appearance: none;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 0.7rem;
+      border: 1px solid #d0d0d0; border-radius: 8px; color: #333;
+      padding: 0.5rem 2rem 0.5rem 0.8rem; font-size: 0.95rem; cursor: pointer; min-width: 190px;
     }
-    #trydemo .aff-btn:hover { border-color: #4A90E2; color: #4A90E2; }
-    #trydemo .aff-btn.active { background: #4A90E2; border-color: #4A90E2; color: #fff; }
+    #trydemo select:focus { outline: none; border-color: #4A90E2; }
+    #trydemo .run-btn {
+      background: #4A90E2; color: #fff; border: none; border-radius: 8px;
+      padding: 0.55rem 1.5rem; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    #trydemo .run-btn:hover { background: #357ABD; }
+    #trydemo .run-btn:disabled { background: #b9c9d9; cursor: default; }
+
+    #trydemo .hint { color: #999; font-size: 0.95rem; line-height: 1.5; }
+    #trydemo .pipeline, #trydemo .result { display: none; }
+    #trydemo .stage[data-mode="running"] .pipeline { display: block; }
+    #trydemo .stage[data-mode="done"] .result { display: block; }
+    #trydemo .stage[data-mode="running"] .hint,
+    #trydemo .stage[data-mode="done"] .hint { display: none; }
+
+    #trydemo .pipe-step {
+      display: flex; align-items: center; gap: 0.65rem; font-size: 0.9rem;
+      color: #bbb; padding: 0.34rem 0; transition: color 0.2s ease;
+    }
+    #trydemo .pipe-step .ic {
+      width: 15px; height: 15px; border-radius: 50%; flex: 0 0 auto;
+      border: 2px solid #ddd; box-sizing: border-box; position: relative;
+    }
+    #trydemo .pipe-step.active { color: #4A90E2; }
+    #trydemo .pipe-step.active .ic {
+      border-color: #4A90E2; border-right-color: transparent;
+      animation: trydemo-spin 0.6s linear infinite;
+    }
+    #trydemo .pipe-step.done { color: #444; }
+    #trydemo .pipe-step.done .ic { border-color: #1a9850; background: #1a9850; animation: none; }
+    #trydemo .pipe-step.done .ic::after {
+      content: ""; position: absolute; left: 3px; top: 0px;
+      width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    @keyframes trydemo-spin { to { transform: rotate(360deg); } }
+
+    #trydemo .result { animation: trydemo-fade 0.45s ease; }
+    @keyframes trydemo-fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+    #trydemo .bar > span { transition: width 0.65s cubic-bezier(.2,.7,.2,1); }
+    #trydemo .pr-bar > span { transition: width 0.5s cubic-bezier(.2,.7,.2,1); }
 
     #trydemo .profile {
       margin-top: 1.25rem; background: #fff; border-radius: 14px; padding: 1.25rem;
@@ -311,37 +356,55 @@
           <div id="chips-lowconf"></div>
         </div>
 
-        <div class="explore-head">Or explore</div>
-        <div class="preset-label">1 &nbsp;&middot;&nbsp; Pick an object</div>
-        <div id="demo-gallery" class="gallery"></div>
-        <div class="preset-label mt-4">2 &nbsp;&middot;&nbsp; Pick an affordance</div>
-        <div id="demo-affs" class="aff-btns"></div>
+        <div class="explore-head">Run it yourself</div>
 
-        <div class="stage" id="demo-stage">
+        <div class="controls">
+          <div class="field-wrap">
+            <label for="demo-obj-sel">Object</label>
+            <select id="demo-obj-sel"></select>
+          </div>
+          <div class="field-wrap">
+            <label for="demo-aff-sel">Affordance</label>
+            <select id="demo-aff-sel"></select>
+          </div>
+          <button class="run-btn" id="demo-run">Run A4D</button>
+        </div>
+
+        <div class="stage" id="demo-stage" data-mode="ready">
           <img id="demo-img" alt="">
           <div class="readout">
-            <div class="query" id="demo-query"></div>
-            <div class="verdict" id="demo-verdict"></div>
-
-            <div class="bar-row">
-              <div class="lab">Calibrated confidence: <b id="demo-conf-val"></b></div>
-              <div class="bar" id="demo-conf-bar"><span></span></div>
+            <div class="hint" id="demo-hint">
+              A4D encodes the image with the fine-tuned CLIP encoder, projects it onto the
+              chosen affordance axis, and calibrates the projection margin into a confidence
+              score. Pick an object and an affordance, then hit <b>Run A4D</b>.
             </div>
 
-            <div class="bar-row axis">
-              <div class="lab">Similarity to <b id="demo-aff-name"></b></div>
-              <div class="bar"><span class="a" id="demo-sim-aff"></span></div>
-            </div>
-            <div class="bar-row axis">
-              <div class="lab">Similarity to <b id="demo-ant-name"></b></div>
-              <div class="bar"><span class="b" id="demo-sim-ant"></span></div>
-            </div>
+            <div class="pipeline" id="demo-pipeline"></div>
 
-            <div class="note" id="demo-note"></div>
+            <div class="result" id="demo-result">
+              <div class="query" id="demo-query"></div>
+              <div class="verdict" id="demo-verdict"></div>
+
+              <div class="bar-row">
+                <div class="lab">Calibrated confidence: <b id="demo-conf-val"></b></div>
+                <div class="bar" id="demo-conf-bar"><span></span></div>
+              </div>
+
+              <div class="bar-row axis">
+                <div class="lab">Similarity to <b id="demo-aff-name"></b></div>
+                <div class="bar"><span class="a" id="demo-sim-aff"></span></div>
+              </div>
+              <div class="bar-row axis">
+                <div class="lab">Similarity to <b id="demo-ant-name"></b></div>
+                <div class="bar"><span class="b" id="demo-sim-ant"></span></div>
+              </div>
+
+              <div class="note" id="demo-note"></div>
+            </div>
           </div>
         </div>
 
-        <div class="profile" id="demo-profile">
+        <div class="profile" id="demo-profile" hidden>
           <div class="profile-title">What this <span id="prof-obj"></span> enables &mdash; all eight affordances</div>
           <div id="prof-rows"></div>
         </div>
@@ -355,58 +418,111 @@
 (function () {
   var CONF_THRESHOLD = 0.7;
   var el = function (id) { return document.getElementById(id); };
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
 
   fetch('./static/demo/results.json').then(function (r) { return r.json(); }).then(function (data) {
-    var AFFS = data.affordances;
+    var AFFS = data.affordances.slice().sort();
     var byImage = {};
     data.items.forEach(function (it) { byImage[it.image] = it; });
 
-    var state = { image: data.presets.confident[0].image, aff: data.presets.confident[0].affordance };
+    var objSel = el('demo-obj-sel');
+    var affSel = el('demo-aff-sel');
+    var stage = el('demo-stage');
+    var runBtn = el('demo-run');
+    var running = false;
 
     var simScale = function (s) { return Math.max(6, Math.min(100, (s - 0.16) / 0.11 * 100)); };
 
+    function findPreset(image, aff) {
+      var hit = null;
+      ['confident', 'lowconf'].forEach(function (g) {
+        data.presets[g].forEach(function (p) {
+          if (p.image === image && p.affordance === aff) hit = p;
+        });
+      });
+      return hit;
+    }
+
+    // ---- populate dropdowns ----
+    data.items.slice().sort(function (a, b) {
+      return a.object.localeCompare(b.object);
+    }).forEach(function (it) {
+      var o = document.createElement('option');
+      o.value = it.image; o.textContent = cap(it.object);
+      objSel.appendChild(o);
+    });
+    AFFS.forEach(function (a) {
+      var o = document.createElement('option');
+      o.value = a; o.textContent = a;
+      affSel.appendChild(o);
+    });
+    objSel.value = data.presets.confident[0].image;
+    affSel.value = data.presets.confident[0].affordance;
+
+    // ---- profile panel ----
     function renderProfile(item) {
       el('prof-obj').textContent = item.object;
-      var rows = AFFS.map(function (a) {
-        return { a: a, r: item.results[a] };
-      }).sort(function (x, y) {
-        if (x.r.pred !== y.r.pred) return y.r.pred - x.r.pred;      // yes rows first
-        return x.r.pred === 1 ? y.r.conf - x.r.conf                  // strongest yes on top
-                              : x.r.conf - y.r.conf;                 // least-certain no just below the yes block
-      });
+      var rows = AFFS.map(function (a) { return { a: a, r: item.results[a] }; })
+        .sort(function (x, y) {
+          if (x.r.pred !== y.r.pred) return y.r.pred - x.r.pred;
+          return x.r.pred === 1 ? y.r.conf - x.r.conf : x.r.conf - y.r.conf;
+        });
       el('prof-rows').innerHTML = rows.map(function (o) {
         var yes = o.r.pred === 1;
         var w = Math.max(6, Math.round(o.r.conf * 100));
-        return '<div class="profile-row' + (o.a === state.aff ? ' sel' : '') +
+        return '<div class="profile-row' + (o.a === affSel.value ? ' sel' : '') +
           '" data-aff="' + o.a + '">' +
           '<span class="pr-lab">' + o.a + '</span>' +
-          '<span class="pr-bar"><span class="' + (yes ? 'y' : 'n') + '" style="width:' + w + '%"></span></span>' +
+          '<span class="pr-bar"><span class="' + (yes ? 'y' : 'n') + '" style="width:0%" data-w="' + w + '"></span></span>' +
           '<span class="pr-val">' + (yes ? 'yes' : 'no') + ' · ' + Math.round(o.r.conf * 100) + '%</span>' +
           '</div>';
       }).join('');
+      setTimeout(function () {
+        el('prof-rows').querySelectorAll('.pr-bar > span').forEach(function (s) {
+          s.style.width = s.dataset.w + '%';
+        });
+      }, 60);
       Array.prototype.forEach.call(el('prof-rows').children, function (row) {
-        row.onclick = function () { select(state.image, row.dataset.aff); };
+        row.onclick = function () {
+          if (running) return;
+          affSel.value = row.dataset.aff;
+          run();
+        };
       });
     }
 
-    function render() {
-      var item = byImage[state.image];
-      var r = item.results[state.aff];
-      var antonym = data.antonyms[state.aff];
+    // ---- staged "generation" ----
+    function runPipeline(aff, ant) {
+      var steps = [
+        'Encoding the image with the fine-tuned CLIP vision encoder',
+        'Projecting the embedding onto the “' + aff + '” ↔ “' + ant + '” axis',
+        'Scoring similarity to “' + aff + '” against similarity to “' + ant + '”',
+        'Calibrating the projection margin into confidence (isotonic regression)'
+      ];
+      var durs = [430, 560, 450, 520];
+      var pl = el('demo-pipeline');
+      pl.innerHTML = steps.map(function (s, i) {
+        return '<div class="pipe-step" data-i="' + i + '"><span class="ic"></span><span>' + s + '</span></div>';
+      }).join('');
+      var nodes = pl.querySelectorAll('.pipe-step');
+      return new Promise(function (resolve) {
+        var i = 0;
+        (function tick() {
+          if (i > 0) { nodes[i - 1].classList.remove('active'); nodes[i - 1].classList.add('done'); }
+          if (i >= nodes.length) { setTimeout(resolve, 160); return; }
+          nodes[i].classList.add('active');
+          setTimeout(tick, durs[i++]);
+        })();
+      });
+    }
 
-      Array.prototype.forEach.call(el('demo-gallery').children, function (t) {
-        t.classList.toggle('sel', t.dataset.image === state.image);
-      });
-      Array.prototype.forEach.call(el('demo-affs').children, function (b) {
-        b.classList.toggle('active', b.dataset.aff === state.aff);
-      });
-      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
-        c.classList.toggle('active', c.dataset.key === state.image + '|' + state.aff);
-      });
+    function reveal() {
+      var image = objSel.value, aff = affSel.value;
+      var item = byImage[image];
+      var r = item.results[aff];
+      var ant = data.antonyms[aff];
 
-      el('demo-img').src = './static/demo/img/' + state.image;
-      el('demo-img').alt = item.object + ' — ' + state.aff;
-      el('demo-query').textContent = 'Is this ' + item.object + ' “' + state.aff + '”?';
+      el('demo-query').textContent = 'Is this ' + item.object + ' “' + aff + '”?';
       el('demo-verdict').innerHTML = r.pred === 1
         ? '<span class="yes">Yes</span>' : '<span class="no">No</span>';
 
@@ -414,19 +530,11 @@
       el('demo-conf-val').textContent = pct + '%';
       var cb = el('demo-conf-bar');
       cb.className = 'bar ' + (r.conf >= CONF_THRESHOLD ? 'conf-hi' : 'conf-lo');
-      cb.firstElementChild.style.width = pct + '%';
 
-      el('demo-aff-name').textContent = '“' + state.aff + '”';
-      el('demo-ant-name').textContent = '“' + antonym + '”';
-      el('demo-sim-aff').style.width = simScale(r.sim_aff) + '%';
-      el('demo-sim-ant').style.width = simScale(r.sim_ant) + '%';
+      el('demo-aff-name').textContent = '“' + aff + '”';
+      el('demo-ant-name').textContent = '“' + ant + '”';
 
-      var preset = null;
-      ['confident', 'lowconf'].forEach(function (g) {
-        data.presets[g].forEach(function (p) {
-          if (p.image === state.image && p.affordance === state.aff) preset = p;
-        });
-      });
+      var preset = findPreset(image, aff);
       var note = el('demo-note');
       if (r.conf >= CONF_THRESHOLD) {
         note.className = 'note ok';
@@ -437,14 +545,61 @@
           'The projection sits near the decision boundary, so calibrated confidence stays low and A4D routes the call to a VLM rather than committing.';
       }
 
+      var cbSpan = cb.firstElementChild;
+      var sa = el('demo-sim-aff'), sb = el('demo-sim-ant');
+      cbSpan.style.width = sa.style.width = sb.style.width = '0%';
+      setTimeout(function () {
+        cbSpan.style.width = pct + '%';
+        sa.style.width = simScale(r.sim_aff) + '%';
+        sb.style.width = simScale(r.sim_ant) + '%';
+      }, 60);
+
       renderProfile(item);
+      el('demo-profile').hidden = false;
+
+      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.key === image + '|' + aff);
+      });
     }
 
-    function select(image, aff) {
-      state.image = image; state.aff = aff; render();
+    function syncImage() {
+      var image = objSel.value;
+      el('demo-img').src = './static/demo/img/' + image;
+      el('demo-img').alt = byImage[image].object;
     }
 
-    // highlight chips
+    function setReady() {
+      syncImage();
+      stage.dataset.mode = 'ready';
+      el('demo-profile').hidden = true;
+      document.querySelectorAll('#trydemo .chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.key === objSel.value + '|' + affSel.value);
+      });
+    }
+
+    function run() {
+      if (running) return;
+      running = true;
+      runBtn.disabled = true;
+      runBtn.textContent = 'Running…';
+      syncImage();
+      el('demo-profile').hidden = true;
+      stage.dataset.mode = 'running';
+      var aff = affSel.value;
+      runPipeline(aff, data.antonyms[aff]).then(function () {
+        stage.dataset.mode = 'done';
+        reveal();
+        running = false;
+        runBtn.disabled = false;
+        runBtn.textContent = 'Run A4D';
+      });
+    }
+
+    objSel.addEventListener('change', setReady);
+    affSel.addEventListener('change', setReady);
+    runBtn.addEventListener('click', run);
+
+    // ---- highlight chips ----
     function addChips(containerId, list) {
       var c = el(containerId);
       list.forEach(function (p) {
@@ -452,40 +607,19 @@
         b.className = 'chip';
         b.dataset.key = p.image + '|' + p.affordance;
         b.textContent = p.object + ' · ' + p.affordance;
-        b.onclick = function () { select(p.image, p.affordance); };
+        b.onclick = function () {
+          if (running) return;
+          objSel.value = p.image;
+          affSel.value = p.affordance;
+          run();
+        };
         c.appendChild(b);
       });
     }
     addChips('chips-confident', data.presets.confident);
     addChips('chips-lowconf', data.presets.lowconf);
 
-    // gallery (curated subset)
-    var g = el('demo-gallery');
-    (data.gallery || data.items.map(function (i) { return i.image; })).forEach(function (img) {
-      var it = byImage[img];
-      if (!it) return;
-      var t = document.createElement('img');
-      t.src = './static/demo/img/' + img;
-      t.alt = it.object;
-      t.title = it.object;
-      t.dataset.image = img;
-      t.loading = 'lazy';
-      t.onclick = function () { select(img, state.aff); };
-      g.appendChild(t);
-    });
-
-    // affordance buttons
-    var ab = el('demo-affs');
-    AFFS.forEach(function (a) {
-      var b = document.createElement('button');
-      b.className = 'aff-btn';
-      b.dataset.aff = a;
-      b.textContent = a;
-      b.onclick = function () { select(state.image, a); };
-      ab.appendChild(b);
-    });
-
-    render();
+    setReady();
   }).catch(function () {
     var s = el('trydemo');
     if (s) s.style.display = 'none';
