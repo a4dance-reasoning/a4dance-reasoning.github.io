@@ -285,6 +285,9 @@
     #datasetviewer .dv-pill.yes { background: #e6f4ea; color: #1a9850; }
     #datasetviewer .dv-pill.no { background: #fbeceb; color: #b0413e; }
     #datasetviewer .dv-pill.na { background: #f2f2f2; color: #999; font-style: italic; font-weight: 500; }
+    #datasetviewer .dv-pill.est { border: 1px dashed currentColor; background: #fff; }
+    #datasetviewer .dv-pill.est.yes { color: #1a9850; }
+    #datasetviewer .dv-pill.est.no { color: #b0413e; }
   </style>
 </head>
 
@@ -854,7 +857,8 @@
           &mdash; ground truth, not model predictions. These objects are separate from the ones
           in <a href="#trydemo">Try A4D</a> above. Each image carries all ten affordances;
           <em>pushable</em> and <em>traversable</em> were added later through affordance
-          discovery and are only annotated for a subset of the dataset.
+          discovery and are only annotated for a subset of the dataset &mdash; a dashed pill
+          marks our best-guess label for an object the discovery pass didn't reach.
         </p>
 
         <div class="dv-stage">
@@ -909,10 +913,12 @@
       el('dv-obj-name').textContent = it.object;
       el('dv-count').textContent = 'Object ' + (idx + 1) + ' / ' + n;
       slider.value = idx;
+      var estimated = it.estimated || [];
       el('dv-rows').innerHTML = AFFS.map(function (a) {
         var v = it.labels[a];
-        var cls = v === null ? 'na' : (v === 1 ? 'yes' : 'no');
-        var txt = v === null ? 'not annotated' : (v === 1 ? 'yes' : 'no');
+        var isEst = estimated.indexOf(a) >= 0;
+        var cls = v === null ? 'na' : (v === 1 ? 'yes' : 'no') + (isEst ? ' est' : '');
+        var txt = v === null ? 'not annotated' : (v === 1 ? 'yes' : 'no') + (isEst ? ' · est.' : '');
         var rowCls = 'dv-row' + (DISCOVERED.indexOf(a) >= 0 ? ' discovered' : '');
         return '<div class="' + rowCls + '"><span class="dv-aff">' + a + '</span>' +
           '<span class="dv-pill ' + cls + '">' + txt + '</span></div>';

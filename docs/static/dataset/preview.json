@@ -26,7 +26,8 @@
         "supportable": 1,
         "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": []
     },
     {
       "image": "bin_000.jpg",
@@ -40,9 +41,12 @@
         "rollable": 0,
         "stackable": 1,
         "supportable": 1,
-        "pushable": null,
+        "pushable": 0,
         "traversable": 0
-      }
+      },
+      "estimated": [
+        "pushable"
+      ]
     },
     {
       "image": "extinguisher_000.jpg",
@@ -56,9 +60,12 @@
         "rollable": 0,
         "stackable": 0,
         "supportable": 0,
-        "pushable": null,
+        "pushable": 0,
         "traversable": 0
-      }
+      },
+      "estimated": [
+        "pushable"
+      ]
     },
     {
       "image": "bowl_000.jpg",
@@ -72,9 +79,12 @@
         "rollable": 0,
         "stackable": 1,
         "supportable": 0,
-        "pushable": null,
+        "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": [
+        "pushable"
+      ]
     },
     {
       "image": "strawberry_000.jpg",
@@ -88,9 +98,12 @@
         "rollable": 0,
         "stackable": 0,
         "supportable": 0,
-        "pushable": null,
+        "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": [
+        "pushable"
+      ]
     },
     {
       "image": "potted_plant_000.jpg",
@@ -106,7 +119,8 @@
         "supportable": 0,
         "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": []
     },
     {
       "image": "photo_frame_000.jpg",
@@ -122,7 +136,8 @@
         "supportable": 0,
         "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": []
     },
     {
       "image": "lamp_002.jpg",
@@ -138,7 +153,8 @@
         "supportable": 0,
         "pushable": 1,
         "traversable": 0
-      }
+      },
+      "estimated": []
     },
     {
       "image": "tvm_001.jpg",
@@ -154,7 +170,8 @@
         "supportable": 1,
         "pushable": 0,
         "traversable": 0
-      }
+      },
+      "estimated": []
     },
     {
       "image": "mouse_000.jpg",
@@ -169,8 +186,11 @@
         "stackable": 0,
         "supportable": 0,
         "pushable": 1,
-        "traversable": null
-      }
+        "traversable": 0
+      },
+      "estimated": [
+        "traversable"
+      ]
     },
     {
       "image": "cart_000.jpg",
@@ -185,8 +205,30 @@
         "stackable": 0,
         "supportable": 1,
         "pushable": 1,
-        "traversable": null
-      }
+        "traversable": 0
+      },
+      "estimated": [
+        "traversable"
+      ]
+    },
+    {
+      "image": "stairs_006.jpg",
+      "object": "stairs",
+      "labels": {
+        "containable": 0,
+        "graspable": 0,
+        "liftable": 0,
+        "movable": 0,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 0,
+        "supportable": 1,
+        "pushable": 0,
+        "traversable": 1
+      },
+      "estimated": [
+        "pushable"
+      ]
     }
   ]
 }
