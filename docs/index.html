@@ -215,6 +215,60 @@
     #trydemo .pr-bar > span.y { background: #1a9850; }
     #trydemo .pr-bar > span.n { background: #d8b0af; }
     #trydemo .pr-val { flex: 0 0 76px; text-align: right; font-size: 0.8rem; color: #777; }
+
+    /* ---- dataset viewer ---- */
+    #datasetviewer .dv-intro a { color: #4A90E2; }
+    #datasetviewer .dv-filmstrip {
+      display: flex; gap: 0.6rem; overflow-x: auto; padding: 0.25rem 0.25rem 0.9rem;
+      margin-bottom: 1rem;
+    }
+    #datasetviewer .dv-thumb {
+      flex: 0 0 auto; width: 76px; cursor: pointer; text-align: center;
+      border: none; background: none; padding: 0; font: inherit;
+    }
+    #datasetviewer .dv-thumb img {
+      width: 76px; height: 76px; object-fit: cover; border-radius: 10px; background: #f4f4f4;
+      border: 3px solid transparent; transition: border-color 0.15s ease;
+    }
+    #datasetviewer .dv-thumb:hover img { border-color: #b9d4f2; }
+    #datasetviewer .dv-thumb.active img { border-color: #4A90E2; }
+    #datasetviewer .dv-thumb-lab {
+      display: block; font-size: 0.72rem; color: #777; margin-top: 0.3rem;
+      text-transform: capitalize; white-space: nowrap;
+    }
+    #datasetviewer .dv-thumb.active .dv-thumb-lab { color: #357ABD; font-weight: 600; }
+
+    #datasetviewer .dv-stage {
+      display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;
+      background: #fff; border-radius: 14px; padding: 1.25rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    #datasetviewer .dv-stage img {
+      width: 240px; height: 240px; object-fit: contain; background: #f4f4f4;
+      border-radius: 10px; flex: 0 0 auto;
+    }
+    #datasetviewer .dv-readout { flex: 1 1 300px; min-width: 260px; animation: trydemo-fade 0.3s ease; }
+    #datasetviewer .dv-obj-name { font-size: 1.4rem; font-weight: 700; text-transform: capitalize; margin-bottom: 0.1rem; }
+    #datasetviewer .dv-sub {
+      font-size: 0.78rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em;
+      margin-bottom: 0.9rem;
+    }
+    #datasetviewer .dv-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.34rem 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem;
+    }
+    #datasetviewer .dv-row:last-child { border-bottom: none; }
+    #datasetviewer .dv-row .dv-aff { color: #444; text-transform: capitalize; }
+    #datasetviewer .dv-row.discovered .dv-aff::after {
+      content: "new"; font-size: 0.58rem; font-weight: 700; color: #fff; background: #4A90E2;
+      border-radius: 4px; padding: 0.08rem 0.32rem; margin-left: 0.45rem; vertical-align: middle;
+    }
+    #datasetviewer .dv-pill {
+      font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 999px; flex: 0 0 auto;
+    }
+    #datasetviewer .dv-pill.yes { background: #e6f4ea; color: #1a9850; }
+    #datasetviewer .dv-pill.no { background: #fbeceb; color: #b0413e; }
+    #datasetviewer .dv-pill.na { background: #f2f2f2; color: #999; font-style: italic; font-weight: 500; }
   </style>
 </head>
 
@@ -772,6 +826,87 @@
     </div>
   </div>
 </section>
+
+<section class="section" id="datasetviewer">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3 has-text-centered">Browse the Dataset</h2>
+        <p class="has-text-centered content mb-5 dv-intro">
+          A look at the raw, human-verified affordance labels A4D trains and calibrates on
+          &mdash; ground truth, not model predictions. These objects are separate from the ones
+          in <a href="#trydemo">Try A4D</a> above. Each image carries all ten affordances;
+          <em>pushable</em> and <em>traversable</em> were added later through affordance
+          discovery and are only annotated for a subset of the dataset.
+        </p>
+
+        <div class="dv-filmstrip" id="dv-filmstrip"></div>
+
+        <div class="dv-stage" id="dv-stage">
+          <img id="dv-img" alt="">
+          <div class="dv-readout">
+            <div class="dv-obj-name" id="dv-obj-name"></div>
+            <div class="dv-sub">Ground-truth affordance labels</div>
+            <div id="dv-rows"></div>
+          </div>
+        </div>
+
+        <p class="has-text-centered mt-5">
+          <a class="button is-link is-rounded" target="_blank" rel="noopener noreferrer"
+             href="https://huggingface.co/datasets/rohansiva/A4D-dataset">
+            <span>View Full Dataset on Hugging Face</span>
+          </a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var el = function (id) { return document.getElementById(id); };
+  var DISCOVERED = ['pushable', 'traversable'];
+
+  fetch('./static/dataset/preview.json').then(function (r) { return r.json(); }).then(function (data) {
+    var AFFS = data.affordances;
+    var strip = el('dv-filmstrip');
+
+    function show(i) {
+      var it = data.items[i];
+      el('dv-img').src = './static/dataset/img/' + it.image;
+      el('dv-img').alt = it.object;
+      el('dv-obj-name').textContent = it.object;
+      Array.prototype.forEach.call(strip.children, function (t, j) {
+        t.classList.toggle('active', j === i);
+      });
+      el('dv-rows').innerHTML = AFFS.map(function (a) {
+        var v = it.labels[a];
+        var cls = v === null ? 'na' : (v === 1 ? 'yes' : 'no');
+        var txt = v === null ? 'not annotated' : (v === 1 ? 'yes' : 'no');
+        var rowCls = 'dv-row' + (DISCOVERED.indexOf(a) >= 0 ? ' discovered' : '');
+        return '<div class="' + rowCls + '"><span class="dv-aff">' + a + '</span>' +
+          '<span class="dv-pill ' + cls + '">' + txt + '</span></div>';
+      }).join('');
+    }
+
+    data.items.forEach(function (it, i) {
+      var b = document.createElement('button');
+      b.className = 'dv-thumb';
+      b.innerHTML = '<img src="./static/dataset/img/' + it.image + '" alt="' + it.object + '" loading="lazy">' +
+        '<span class="dv-thumb-lab">' + it.object + '</span>';
+      b.onclick = function () { show(i); };
+      strip.appendChild(b);
+    });
+
+    show(0);
+  }).catch(function () {
+    var s = el('datasetviewer');
+    if (s) s.style.display = 'none';
+  });
+})();
+</script>
 
 <section class="hero is-small is-light">
   <div class="hero-body">

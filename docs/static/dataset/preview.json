@@ -1,0 +1,192 @@
+{
+  "affordances": [
+    "containable",
+    "graspable",
+    "liftable",
+    "movable",
+    "openable",
+    "rollable",
+    "stackable",
+    "supportable",
+    "pushable",
+    "traversable"
+  ],
+  "items": [
+    {
+      "image": "chair_000.jpg",
+      "object": "chair",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 0,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 1,
+        "pushable": 1,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "bin_000.jpg",
+      "object": "bin",
+      "labels": {
+        "containable": 1,
+        "graspable": 0,
+        "liftable": 0,
+        "movable": 0,
+        "openable": 1,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 1,
+        "pushable": null,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "extinguisher_000.jpg",
+      "object": "extinguisher",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 0,
+        "supportable": 0,
+        "pushable": null,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "bowl_000.jpg",
+      "object": "bowl",
+      "labels": {
+        "containable": 1,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 0,
+        "pushable": null,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "strawberry_000.jpg",
+      "object": "strawberry",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 0,
+        "supportable": 0,
+        "pushable": null,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "potted_plant_000.jpg",
+      "object": "potted plant",
+      "labels": {
+        "containable": 1,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 0,
+        "pushable": 1,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "photo_frame_000.jpg",
+      "object": "photo frame",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 0,
+        "pushable": 1,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "lamp_002.jpg",
+      "object": "lamp",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 1,
+        "supportable": 0,
+        "pushable": 1,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "tvm_001.jpg",
+      "object": "TV monitor",
+      "labels": {
+        "containable": 0,
+        "graspable": 0,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 0,
+        "supportable": 1,
+        "pushable": 0,
+        "traversable": 0
+      }
+    },
+    {
+      "image": "mouse_000.jpg",
+      "object": "computer mouse",
+      "labels": {
+        "containable": 0,
+        "graspable": 1,
+        "liftable": 1,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 0,
+        "stackable": 0,
+        "supportable": 0,
+        "pushable": 1,
+        "traversable": null
+      }
+    },
+    {
+      "image": "cart_000.jpg",
+      "object": "cart",
+      "labels": {
+        "containable": 1,
+        "graspable": 0,
+        "liftable": 0,
+        "movable": 1,
+        "openable": 0,
+        "rollable": 1,
+        "stackable": 0,
+        "supportable": 1,
+        "pushable": 1,
+        "traversable": null
+      }
+    }
+  ]
+}
