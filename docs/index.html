@@ -369,36 +369,15 @@
       
         </div>
       
-        <!-- Hero clips: external + first-person, side by side. Alternating arm / dog. -->
+        <!-- Full demo video -->
         <div style="margin-top: 2rem;">
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_arm_left.mp4" type="video/mp4">
+          <video controls muted playsinline preload="none"
+                 poster="./static/videos/A4D_Demo_poster.jpg"
+                 style="width:100%; max-width:1000px; border-radius:12px;">
+            <source src="./static/videos/A4D_Demo_Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
           </video>
-          <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Manipulation: <em>“place the strawberry in the can.”</em> External view (left) and on-robot view (right).
-          </p>
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_dog_left.mp4" type="video/mp4">
-          </video>
-          <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Navigation: <em>“go to the far end of the hallway.”</em> External view (left) and on-robot view (right). A4D infers the blocking cart is <em>movable</em> and clears the path.
-          </p>
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
-          </video>
-          <p class="is-size-7 has-text-centered mt-2 mb-4">
-            Manipulation: <em>“stack the cube and orange on the book.”</em> External view (left) and on-robot view (right); the green tag is A4D's live affordance inference.
-          </p>
-          <video autoplay muted loop playsinline preload="metadata"
-                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
-            <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
-          </video>
-          <p class="is-size-7 has-text-centered mt-2">
-            Navigation: a second hallway run. External view (left) and on-robot view (right).
-          </p>
+          <p class="is-size-7 has-text-centered mt-2">Full demo video: method overview and real-robot deployment on manipulation and navigation tasks.</p>
         </div>
 
       </div>
@@ -415,10 +394,10 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <p class="is-size-5">
-            <b>A4D reasons about what objects <em>enable</em>, not what they <em>are</em></b>,
+            <b>TLDR:</b> <b>A4D reasons about what objects <em>enable</em>, not what they <em>are</em></b>,
             mapping visual observations into a functional latent space built from affordance axes
-            like <em>movable</em> &harr; <em>fixed</em>, and discovering new affordances on the fly
-            when the existing ones fall short.
+            like <em>movable</em> &harr; <em>fixed</em>, and discovering new affordances
+            when the existing ones are insufficient.
           </p>
         </div>
       </div>
@@ -784,52 +763,11 @@
           </ul>
         </div>
 
-        <h3 class="title is-4 has-text-centered mt-6">Functional Latent Space</h3>
-        <p class="has-text-centered content mb-4">
-          <em>Projecting what an object looks like onto what it can do.</em>
-        </p>
-
-        <figure class="image">
-          <img src="./static/images/framework1.png"
-               alt="Functional latent space for affordance reasoning"
+        <figure class="image mt-6">
+          <img src="./static/images/framework_build.gif"
+               alt="A4D generation and discovery pipeline building up step by step"
                class="paper-figure">
         </figure>
-
-        <div class="content has-text-justified mt-4">
-          <p>
-            <b>Functional Latent Space for Affordance Reasoning.</b>
-            A4D maps visual observations and affordance descriptions into a shared
-            functional latent space. For each affordance, we construct an affordance axis
-            between an affordance and its antonym (e.g., movable ↔ fixed). Visual
-            observations are projected onto these axes to infer task-relevant object
-            functionalities. Projection proximity is calibrated into uncertainty estimates,
-            enabling the system to identify when additional reasoning is required.
-          </p>
-        </div>
-
-        <h3 class="title is-4 has-text-centered mt-6">Affordance Discovery</h3>
-        <p class="has-text-centered content mb-4">
-          <em>Generating a new affordance when none of the existing ones fit.</em>
-        </p>
-
-        <figure class="image">
-          <img src="./static/images/framework2.png"
-               alt="A4D generation and discovery pipeline"
-               class="paper-figure">
-        </figure>
-
-        <div class="content has-text-justified mt-4">
-          <p>
-            <b>Uncertainty-Aware Affordance Discovery.</b>
-            Given a task and visual observation, A4D first generates candidate
-            affordances relevant to the current planning problem. Affordance inference is
-            performed in the functional latent space, while calibrated uncertainty determines
-            whether existing affordances are sufficient. When uncertainty is high or a new
-            functionality is required, a vision-language model proposes and labels new
-            affordances, which are incorporated through offline learning and added to the
-            affordance memory for future deployment.
-          </p>
-        </div>
 
       </div>
     </div>
@@ -843,18 +781,39 @@
 
         <h2 class="title is-3 has-text-centered">Demonstrations</h2>
         <p class="has-text-centered content mb-5">
-          The full demo video walks through the method and the real-robot deployments on the
-          manipulation and navigation tasks shown at the top of the page.
+          Four clips below pair the external view with the on-robot view for each task shown in
+          the video above, followed by the qualitative results.
         </p>
 
         <div class="has-text-centered mb-6">
-          <video controls muted playsinline preload="none"
-                 poster="./static/videos/A4D_Demo_poster.jpg"
-                 style="width:100%; max-width:1000px; border-radius:12px;">
-            <source src="./static/videos/A4D_Demo_Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_arm_left.mp4" type="video/mp4">
           </video>
-          <p class="is-size-7 mt-2">Full demo video: method overview and real-robot deployment on manipulation and navigation tasks.</p>
+          <p class="is-size-7 mt-2 mb-4">
+            Manipulation: <em>“place the strawberry in the can.”</em> External view (left) and on-robot view (right).
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_arm_right.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 mt-2 mb-4">
+            Manipulation: <em>“stack the cube and orange on the book.”</em> External view (left) and on-robot view (right); the green tag is A4D's live affordance inference.
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_dog_left.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 mt-2 mb-4">
+            Navigation: <em>“go to the far end of the hallway.”</em> External view (left) and on-robot view (right). A4D infers the blocking cart is <em>movable</em> and clears the path.
+          </p>
+          <video autoplay muted loop playsinline preload="metadata"
+                 style="width:100%; max-width:1000px; aspect-ratio:1422/400; background:#000; border-radius:12px;">
+            <source src="./static/videos/clips/task_dog_right.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 mt-2">
+            Navigation: a second hallway run. External view (left) and on-robot view (right).
+          </p>
         </div>
 
         <h3 class="title is-4 has-text-centered mt-6">Cross-Scenario Decision Making</h3>
